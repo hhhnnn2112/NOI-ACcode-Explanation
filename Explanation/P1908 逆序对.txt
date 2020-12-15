@@ -1,0 +1,57 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+ll n;
+int b[500001];
+struct node
+{
+	int val;
+	int pos;
+}a[500010];
+ll lowbit(ll k)
+{
+	return k&-k;
+}
+ll sum(ll k)
+{
+	int an=0;
+	while(k>0)
+	{
+		an+=b[k];
+		k-=lowbit(k);
+	}
+	return an;
+}
+void add(ll a,ll v)
+{
+	while(a<=n)
+	{
+		b[a]+=v;
+		a+=lowbit(a);
+	}
+}
+bool cmp(node a,node b)
+{
+	if(a.val==b.val)
+	{
+		return a.pos<b.pos;
+	}
+	return a.val<b.val;//离散化排序 
+}
+ll ans=0;
+int main()
+{
+	scanf("%lld",&n);
+	for(int i=0;i<n;i++)
+	{
+		scanf("%d",&a[i].val);
+		a[i].pos=i+1;
+	}
+	sort(a,a+n,cmp);//离散化（按大小排名排序） 
+	for(int i=n-1;i>=0;i--)
+	{
+		ans+=sum(a[i].pos);
+		add(a[i].pos,1);
+	}
+	printf("%lld",ans);
+}

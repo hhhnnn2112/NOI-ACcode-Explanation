@@ -1,0 +1,74 @@
+#include<bits/stdc++.h>
+using namespace std;
+int k,A,B;
+struct yy
+{
+	int x,y,edge;
+}a[1000050];
+int f[1000];
+int find(int k)
+{
+	if(f[k]==k)
+	{
+		return k;
+	}
+	return f[k]=find(f[k]);
+}
+bool cmp(yy a,yy b)
+{
+	return a.edge<b.edge;
+}
+int cnt;
+int ans=0;
+void kr()
+{
+	sort(a+1,a+k+1,cmp);
+	for(int i=0;i<k;i++)
+	{
+		int fx=find(a[i].x);
+		int fy=find(a[i].y);
+		if(fx==fy)
+		{
+			continue;
+		}
+		ans+=a[i].edge;
+		f[fx]=fy;
+		if(++cnt==B)
+		{
+			return;
+		}
+	}
+}
+int main()
+{
+	scanf("%d%d",&A,&B);
+	for(int i=1;i<=B;i++)
+	{
+		f[i]=i;
+	}
+	for(int i=1;i<=B;i++)
+	{
+		for(int j=1;j<=B;j++)
+		{
+			int tmp;
+			scanf("%d",&tmp);
+			if(tmp!=0&&i<=j&&tmp<=A)
+			{
+				k++;
+				a[k].x=i;
+				a[k].y=j;
+				a[k].edge=tmp;
+			}
+			if((tmp==0&&i<=j)||tmp>A)
+			{
+				k++;
+				a[k].x=i;
+				a[k].y=j;
+				a[k].edge=A;
+			}
+		}
+	}
+	kr();
+	printf("%d",ans+A);
+	return 0;
+}

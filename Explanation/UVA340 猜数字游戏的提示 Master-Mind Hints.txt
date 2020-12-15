@@ -1,0 +1,59 @@
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
+
+using namespace std;
+
+inline int read() {
+	int cnt = 0, flag = 1;
+	char ch = getchar();
+	while (ch < '0' || ch > '9') {
+		if (ch == '-') flag = -1;
+		ch = getchar();
+	}
+	while (ch >= '0' && ch <= '9') {
+		cnt = cnt * 10 + ch - '0';
+		ch = getchar();
+	}
+	return cnt * flag;
+}//快读优化
+
+int n;
+int Case;
+int ans[10001];
+int guess[10001];
+
+int main() {
+	while (1) {
+		int A, B;
+		n = read();
+		if (n == 0)
+			return 0;
+		printf("Game %d:\n", ++Case);
+		for (int i = 1; i <= n; i++)
+			ans[i] = read();
+		while (1) {
+			A = 0, B = 0;
+			for (int i = 1; i <= n; i++)
+				guess[i] = read();
+			if (guess[1] == 0)//普通序列不会出现0
+				break;
+			for (int i = 1; i <= n; i++)
+				if (guess[i] == ans[i])
+					A++;//第一问
+			int c1 = 0, c2 = 0;
+			for (int i = 1; i <= 9; i++) {
+				c1 = 0, c2 = 0;
+				for (int j = 1; j <= n; j++) {
+					if (ans[j] == i)
+						c1++;
+					if (guess[j] == i)
+						c2++;
+				}
+				B += min(c1, c2);//取都有的个数
+			}
+			printf("    (%d,%d)\n", A, B - A);//注意输出
+		}
+	}
+}

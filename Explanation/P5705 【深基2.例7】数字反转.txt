@@ -1,0 +1,10 @@
+#include<bits/stdc++.h>
+using namespace std;
+char a[1000];
+int main()
+{
+	cin>>a;
+	reverse(a,a+strlen(a));
+	cout<<a;
+	return 0;
+}

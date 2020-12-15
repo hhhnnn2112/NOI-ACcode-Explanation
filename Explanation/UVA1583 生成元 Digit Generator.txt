@@ -1,0 +1,35 @@
+#include <cstdio>
+
+int t,n,ans[100010];
+
+int getsum(int number)//这个函数是求一个数的数位和的
+{
+	int sum=0;
+	while(number)
+	{
+		sum+=number%10;
+		number/=10;
+	}
+	return sum;
+}
+
+void init()//预处理
+{
+	for(int i=100000;i>=1;i--)//从后往前
+	{
+		int num=getsum(i);
+		ans[num+i]=i;//这样能保证ans数组里的数一定是最小的，因为小的能把大的给覆盖掉
+	}
+}
+
+int main()
+{
+	init();
+	scanf("%d",&t);
+	while(t--)
+	{
+		scanf("%d",&n);
+		printf("%d\n",ans[n]);
+	}
+	return 0;
+}

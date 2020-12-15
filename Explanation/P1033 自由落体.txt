@@ -1,0 +1,16 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n;
+double h,s,v,l,k;
+int main()
+{
+	cin>>h>>s>>v>>l>>k>>n;
+	double a=sqrt(h/5);
+	double b=sqrt((h-k)/5);
+	int aa=int(s-b*v+l);
+	int bb=int(s-a*v);
+	aa=fmin(aa,n);
+	bb=fmax(0,bb);
+	cout<<aa-bb;
+	return 0;
+}

@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int mod=100003;
+int n,m,a[1005][1005];
+bool b[1005][1005];
+int main()
+{
+	cin>>n>>m;
+	for(int i=1;i<=m;i++)
+	{
+		int x,y;
+		cin>>x>>y;
+		b[x][y]=true;
+	}
+	a[0][1]=1;
+	for(int i=1;i<=n;i++)
+	{
+		for(int j=1;j<=n;j++)
+		{
+			a[i][j]=(a[i-1][j]+a[i][j-1])%mod;
+			if(b[i][j])a[i][j]=0;
+		}
+	}
+	cout<<a[n][n]%mod;
+	return 0;
+}

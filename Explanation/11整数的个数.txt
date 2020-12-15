@@ -1,0 +1,23 @@
+
+#include <iostream>
+using namespace std;
+int main()
+{
+	int k,i,j,x=0,y=0,z=0;
+	int a[105];
+	cin>>k;
+	for(i=0;i<k;i++)
+		cin>>a[i];
+	for(i=0;i<k;i++)
+	{
+		if(a[i]==1)
+			x++;
+		if(a[i]==5)
+			y++;
+		if(a[i]==10)
+			z++;
+	}
+	cout<<x<<endl;
+	cout<<y<<endl;
+	cout<<z<<endl;
+        return 0;

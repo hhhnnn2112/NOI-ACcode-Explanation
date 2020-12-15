@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+int n,a[510][510],ans;
+bool win=0;
+int main()
+{
+	cout<<"1"<<endl;
+	cin>>n;
+	for(int i=1;i<=n;i++)
+	{
+		for(int j=i+1;j<=n;j++)
+		{
+			cin>>a[i][j];
+			a[j][i]=a[i][j];
+		}
+	}
+	for(int i=1;i<=n;i++)
+	{
+		sort(a[i]+1,a[i]+1+n);
+		if(ans<a[i][n-1])
+		{
+			ans=a[i][n-1];
+		}
+	}
+	cout<<ans;
+}

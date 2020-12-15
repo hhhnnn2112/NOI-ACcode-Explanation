@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define re register
+#define ll long long
+const int maxn=1e6+1;
+ll l,r;
+int prime[maxn],cnt,ans;
+bool vis[maxn];
+inline void Gprime()//线性筛素数,预处理根号R内的素数,这里不赘述了,dalao们肯定都会qwq
+{
+    for(re int i=2;i<=50000;++i)
+    {
+        if(!vis[i])prime[++cnt]=i;
+        for(re int j=1;i*prime[j]<=50000;j++)
+        {
+            vis[i*prime[j]]=1;//标记合数
+            if(i%prime[j]==0) break;
+        }
+    }
+}//50000的范围很小即使不用线性筛用根号N的筛法也能过
+int main()
+{
+    ios::sync_with_stdio(false);//读入加速(在freopen下不可用!!!)
+    cin>>l>>r;
+    l=l==1?2:l;//特判L=1的情况
+    Gprime();//筛出根号R内的所有质数以及剩下的合数
+    memset(vis,0,sizeof(vis));//懒得多开一个数组,沿用函数中的数组时记得清空
+    for(re int i=1;i<=cnt;++i)//枚举已经筛出来的质数
+    {
+        ll p=prime[i],start=(l+p-1)/p*p>2*p?(l+p-1)/p*p:2*p;//我们从大于L的最小的能被p整除的数开始,(l+p-1)就等于ceil(l+p-1),因为有可能会在接下来筛的过程中把自己也一起筛掉,所以在此特判一下
+        for(re ll int j=start;j<=r;j+=p)vis[j-l+1]=1;//因为如果从j开始标记的话可能会爆vis的空间,所以我们这里从1开始标记合数,原理在上面已经叙述过了
+    }
+    for(re int i=1;i<=r-l+1;++i)if(!vis[i])ans++;//r-l+1即为区间长度,遍历区间找没有被标记的元素并累加答案
+    cout<<ans;
+}

@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int N=10009;
+int a[N];
+int ans[N];
+int n;
+int main()
+{
+	scanf("%d",&n);
+	memset(ans,0,sizeof a);
+	for(int i=1;i<=n;i++)
+	{
+		int x,y,z;
+		scanf("%d%d",&x,&a[i]);
+		while(true)
+		{
+			scanf("%d",&z);
+			if(z==0)break;
+			ans[i]=max(ans[z],ans[i]);
+		}
+		ans[i]+=a[i];
+	}
+	int anss=0;
+	for(int i=1;i<=n;i++)
+	{
+		anss=max(anss,ans[i]);
+	}
+	printf("%d",anss);
+	return 0;
+}

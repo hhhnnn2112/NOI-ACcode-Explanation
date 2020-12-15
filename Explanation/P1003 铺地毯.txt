@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+int a[10001],b[10001],c[10001],d[10001],n,i,l,m;
+int main()
+{
+	cin>>n;
+	for(i=1;i<=n;i++)
+	{
+		cin>>a[i]>>b[i]>>c[i]>>d[i];
+	}
+	cin>>l>>m;
+	for(;i>=1;i--)
+	{
+		if(l>=a[i]&&l<=a[i]+c[i]&&m>=b[i]&&m<=b[i]+d[i])
+		{
+			cout<<i;
+			return 0;
+		}
+	}
+	cout<<"-1";
+	return 0;
+}

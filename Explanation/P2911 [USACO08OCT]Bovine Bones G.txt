@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n[100],a,b,c,ans;
+int main()
+{
+	cin>>a>>b>>c;
+	for(int i=1;i<=a;i++)
+	{
+		for(int j=1;j<=b;j++)
+		{
+			for(int k=1;k<=c;k++)
+			{
+				n[i+j+k]++;
+			}
+		}
+	}
+	for(int i=3;i<=80;i++)
+	{
+		if(ans<n[i])ans=n[i];
+	}
+	for(int i=3;i<=80;i++)
+	{
+		if(ans==n[i])
+		{
+			cout<<i;
+			break;
+		}
+	}
+	return 0;
+}

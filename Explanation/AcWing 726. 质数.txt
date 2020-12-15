@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+typedef long long LL;
+bool complare(int a,int b)
+{
+    return a>b;
+}
+int main()
+{
+   int n;
+   cin>>n;
+   int x, res = 0;
+   while(n--){
+       cin>> x;
+       int k  = (int)(sqrt(x));
+        bool prime = true;
+       for(int i = 2; i <= k; i++){
+           if(x % i == 0){
+               prime = false;
+           }
+       }
+       if(prime == true)
+        cout<< x <<" is prime" << endl;
+      if(prime == false)
+          cout << x <<" is not prime" << endl;
+   }
+  return 0;
+}
+
+作者：zhiling
+链接：https://www.acwing.com/solution/content/1880/
+来源：AcWing
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

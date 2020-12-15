@@ -1,0 +1,22 @@
+
+#include <iostream>
+#include <stdio.h>
+using namespace std;
+int main()
+{
+	int n,i;
+	double sum=0;
+	double a[35],b[35],c[35];
+	cin>>n;
+	a[0]=2;
+	b[0]=1;
+	for(i=1;i<n;i++)
+	{
+		a[i]=a[i-1]+b[i-1];
+		b[i]=a[i-1];
+		c[i]=a[i]/b[i];
+		sum+=c[i];
+	}
+	sum=sum+2.0;
+	printf("%.4lf",sum);
+	return 0;

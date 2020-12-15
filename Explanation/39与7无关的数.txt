@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	int n,i,j,sum=0;
+	cin>>n;
+	for(i=1;i<=n;i++)
+	{
+		if((i%7)!=0&&(i%10)!=7&&(i/10)!=7)
+		{
+			j=i*i;
+			sum+=j;
+		}
+	}
+	cout<<sum;
+	return 0;

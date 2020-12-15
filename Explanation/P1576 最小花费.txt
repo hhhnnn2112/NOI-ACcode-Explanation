@@ -1,0 +1,61 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int N=200050;
+int head[N],nxt[N],tot,ver[N];
+double edge[N];
+void add(int x,int y,double z)
+{
+	ver[++tot]=y;
+	edge[tot]=1.-(double)(z/100.);
+	nxt[tot]=head[x];
+	head[x]=tot;
+}
+int a,b;
+double ans;
+double d[N];
+bool v[N];
+int n,m;
+priority_queue<pair<double ,int> >q;
+void di()
+{
+	memset(d,-0x3f,sizeof d);
+	memset(v,0,sizeof v);
+	q.push(make_pair(1,a));
+	d[a]=1;
+	while(!q.empty())
+	{
+		int x=q.top().second;
+		q.pop();
+		if(v[x])
+		{
+			continue;
+		}
+		v[x]=1;
+		for(int i=head[x];i;i=nxt[i])
+		{
+			int y=ver[i];
+			double z=edge[i];
+			if(d[y]<d[x]*z)
+			{
+				d[y]=d[x]*z;
+				q.push(make_pair(d[y],y));
+			}
+		}
+	}
+}
+int main()
+{
+	scanf("%d%d",&n,&m);
+	for(int i=1;i<=m;i++)
+	{
+		int x,y;
+		double z;
+		scanf("%d%d%lf",&x,&y,&z);
+		add(x,y,z);
+		add(y,x,z);
+	}
+	scanf("%d%d",&a,&b);
+	di();
+	printf("%.8lf",100./d[b]);
+	return 0;
+}

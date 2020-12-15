@@ -1,0 +1,12 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int a,b,c,d,m,n,l;
+	cin>>a>>b>>c>>d;
+	m=c*60+d-a*60-b;
+	n=m%60;
+	l=m/60;
+	cout<<l<<" "<<n;
+	return 0; 
+}

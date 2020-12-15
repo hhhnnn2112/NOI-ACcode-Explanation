@@ -1,0 +1,15 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int a[101],i=0;
+	do
+	{
+		i++;
+		cin>>a[i];
+	}
+	while(a[i]!=0);
+	i--;
+	for(;i>=1;i--)cout<<a[i]<<" ";
+	return 0;
+}

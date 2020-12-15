@@ -1,0 +1,27 @@
+
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+	long n,i=2,count=0;
+	long j,flag,t;
+	cin>>n;   
+	while(count<n)
+	{
+		j=2;
+		flag=0;
+		for(j=2;j<=sqrt(i);j++)
+		{
+			if(i%j==0)
+			{
+				flag=1;
+				break;
+			}
+		}
+		if(flag==0)   
+			count++;
+		i++;
+	}
+	cout<<i-1;
+	return 0;

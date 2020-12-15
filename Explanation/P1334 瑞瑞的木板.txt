@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+const int p=1e9+7;
+ll n,ans,t;
+priority_queue<ll,vector<ll>,greater<ll> > a;
+int main()
+{
+	cin>>n;
+	for(int i=1;i<=n;i++)
+	{
+		cin>>t;
+		a.push(t);
+	}
+	for(int i=1;i<=n-1;i++)
+	{
+		int ta,tb;
+		ta=a.top();
+		a.pop();
+		tb=a.top();
+		a.pop();
+		ans+=ta+tb;
+		a.push(ta+tb);
+	}
+	cout<<ans;
+	return 0;
+}

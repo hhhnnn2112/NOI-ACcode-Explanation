@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct a
+{
+	int bh;
+	int sc;
+}aa[5010];
+bool p(a x,a y)
+{
+	if(x.sc==y.sc)
+	{
+		return x.bh<y.bh;
+	}
+	return x.sc>y.sc;
+}
+int tt,n,m,ss;
+int main()
+{
+	cin>>n>>m;
+	for(int i=1;i<=n;i++)
+	{
+		cin>>aa[i].bh>>aa[i].sc;
+	}
+	sort(aa+1,aa+n+1,p);
+	m=m*15;
+	m/=10;
+	tt=aa[m].sc;
+	cout<<tt<<" ";
+	for(int i=1;aa[i].sc>=tt;i++)
+	{
+		ss++;
+	}
+	cout<<ss<<endl;
+	for(int i=1;i<=ss;i++)
+	{
+		cout<<aa[i].bh<<" "<<aa[i].sc<<endl;
+	}
+	return 0;
+}

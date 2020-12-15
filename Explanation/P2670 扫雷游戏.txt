@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool a[120][120];
+int m,n,tem;
+char tmp;
+bool in(int x,int y)//判断是否出界 
+{
+	return 0<=x&&x<n&&0<=y&&y<m;
+}
+const int dx[ ]={0,1,0,1,-1,-1,1,-1};
+const int dy[ ]={1,0,-1,1,0,1,-1,-1};
+int main()
+{
+	cin>>n>>m;
+	for(int i=0;i<n;i++)
+	{
+		for(int j=0;j<m;j++)
+		{
+			cin>>tmp;
+			if(tmp=='*')a[i][j]=1;
+		}
+	}
+	for(int i=0;i<n;i++)
+	{
+		for(int j=0;j<m;j++)
+		{
+			if(a[i][j]==1)cout<<"*";
+			else
+			{
+				for(int k=0;k<8;k++)
+				{
+					int x=i+dx[k];
+					int y=j+dy[k];
+					if(in(x,y)&&a[x][y]==1)
+					{
+						tem++;
+					}
+				}
+				cout<<tem;
+				tem=0;
+			}
+		}
+		cout<<endl;
+	}
+	return 0;
+}

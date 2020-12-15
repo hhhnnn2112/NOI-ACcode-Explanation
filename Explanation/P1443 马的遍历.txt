@@ -1,0 +1,61 @@
+#include<bits/stdc++.h>
+using namespace std;
+int aa[420][420];
+int n,m;
+struct xy
+{
+	int x,y;
+}node,topp;
+int xd[4]={1,-1,2,-2};
+int yd[4]={1,-1,2,-2};
+void bfs(int x,int y,int step)
+{
+	aa[x][y]=step;
+	queue<xy> Q;
+	node.x=x;
+	node.y=y;
+	Q.push(node);
+	while(!Q.empty())
+	{
+		topp=Q.front();
+		Q.pop();
+		for(int i=0;i<4;i++)
+		{
+			for(int j=0;j<4;j++)
+			{
+				if(abs(xd[i])!=abs(yd[j]))
+				{
+					int NewX=topp.x+xd[i];
+					int NewY=topp.y+yd[j];
+					if(NewX<1||NewX>n||NewY<1||NewY>m)
+					{
+						continue;
+					}	
+					if(aa[NewX][NewY]==-1)
+					{
+						node.x=NewX;
+						node.y=NewY;
+						Q.push(node);
+						aa[NewX][NewY]=aa[topp.x][topp.y]+1;
+					}
+				}
+			}
+		}
+	}
+}
+int main()
+{
+	memset(aa,-1,sizeof(aa));
+	int x,y;
+	scanf("%d%d%d%d",&n,&m,&x,&y);
+	bfs(x,y,0);
+	for(int i=1;i<=n;i++)
+	{
+		for(int j=1;j<=m;j++)
+		{
+			printf("%-5d",aa[i][j]);
+		}
+		printf("\n");
+	}
+	return 0;
+}

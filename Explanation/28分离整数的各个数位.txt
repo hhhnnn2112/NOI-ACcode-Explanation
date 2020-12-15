@@ -1,0 +1,15 @@
+
+#include <iostream>
+using namespace std;
+int main()
+{
+	long n;
+	int i,a;
+	cin>>n;
+	while(n!=0)
+	{
+		a=n%10;
+		n/=10;
+		cout<<a<<" ";
+	}
+	return 0;

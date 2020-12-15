@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,m;
+int v,p,q;
+const int N=35005;
+int mw[N],mc[N];
+int aw[N][3],ac[N][3];
+int f[N];
+int main()
+{
+	cin>>m>>n;
+	for(int i=1;i<=n;i++)
+	{
+		cin>>v>>p>>q;
+		if(!q)
+		{
+			mw[i]=v;
+			mc[i]=p*v;
+		}
+		else
+		{
+			aw[q][0]++;
+			aw[q][aw[q][0]]=v;
+			ac[q][aw[q][0]]=v*p;
+		}
+	}
+	for(int i=1;i<=n;i++)
+	{
+		for(int j=m;j>=mw[i]&&mw[i]!=0;j--)
+		{
+			f[j]=max(f[j],f[j-mw[i]]+mc[i]);
+			if(j>=mw[i]+aw[i][1])
+			{
+				f[j]=max(f[j],f[j-mw[i]-aw[i][1]]+mc[i]+ac[i][1]);
+			}
+			if(j>=mw[i]+aw[i][2])
+			{
+				f[j]=max(f[j],f[j-mw[i]-aw[i][2]]+mc[i]+ac[i][2]);
+			}
+			if(j>=mw[i]+aw[i][1]+aw[i][2])
+			{
+				f[j]=max(f[j],f[j-mw[i]-aw[i][1]-aw[i][2]]+mc[i]+ac[i][1]+ac[i][2]);
+			}
+		}
+	}
+	cout<<f[m]<<endl;
+	return 0;
+}

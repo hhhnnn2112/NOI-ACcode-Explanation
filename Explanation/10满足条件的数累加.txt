@@ -1,0 +1,16 @@
+
+#include <iostream>
+using namespace std;
+int main()
+{
+	int m,n,i,sum=0;
+	cin>>m>>n;
+	for(i=m;i<=n;i++)
+	{
+		if(i%17==0)                //找到能被17整除的数
+		{
+			sum+=i;                //相加
+		}    
+	}
+	cout<<sum;
+	return 0;

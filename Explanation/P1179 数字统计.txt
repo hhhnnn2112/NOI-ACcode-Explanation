@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long l,r,ans;
+int main()
+{
+	cin>>l>>r;
+	for(int i=l;i<=r;i++)
+	{
+		int j=i;
+		for(;j>0;)
+		{
+			if(j%10==2)
+			{
+				ans++;
+			}
+			j/=10;
+		}
+	}
+	cout<<ans;
+	return 0;
+} 

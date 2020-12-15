@@ -1,0 +1,59 @@
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+#include <cmath>
+#include <algorithm>
+
+#define Max_len 1001
+
+using namespace std;
+
+inline int read() {
+	int cnt = 0, flag = 1;
+	char ch = getchar();
+	while (ch < '0' || ch > '9') {
+		if (ch == '-') flag = -1;
+		ch = getchar();
+	}
+	while (ch >= '0' && ch <= '9') {
+		cnt = cnt * 10 + (ch - '0');
+		ch = getchar();
+	}
+	return cnt * flag;
+}//读入优化
+
+int n;
+int len;
+char s[2 * Max_len];
+char ans[Max_len];
+
+inline void change(int begin) {
+	int flag = 0;
+	for (int j = 1, i = begin; j <= len; i++, j++) {
+		if (ans[j] < s[i])
+			return;
+		else if (ans[j] > s[i]) {
+			flag = 1;
+			break;
+     	}
+	}
+	if (flag == 1) {
+		for (int j = begin, i = 1; i <= len; i++, j++)
+			ans[i] = s[j];
+	}
+}//判断是否能更改
+
+int main() {
+	n = read();
+	while (n--)  {
+		scanf("%s", s + 1);
+		len = strlen(s + 1);
+		for (int i = 1; i <= len; i++)
+			s[i + len] = s[i], ans[i] = s[i];//先把ans赋为第一个字符
+		for (int i = 1; i <= len; i++)
+			change(i);//枚举每一个起点
+		for (int i = 1; i <= len; i++)
+			printf("%c", ans[i]);//输出
+		puts("");
+	}
+}

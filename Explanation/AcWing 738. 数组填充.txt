@@ -1,0 +1,15 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+int main()
+{
+    int x,i,v;
+    cin>>v;
+    x=v;
+    for(i=0;i<=9;i++)
+    {
+        printf("N[%d] = %d\n",i,x);
+        x=x*2;
+    }
+    return 0;
+}

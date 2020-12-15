@@ -1,0 +1,14 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	double K,N=0,n=0;
+	cin>>K;
+	for(;n<=K;)
+	{
+		N++;
+		n+=1/N;
+	}
+	cout<<N;
+	return 0;
+}

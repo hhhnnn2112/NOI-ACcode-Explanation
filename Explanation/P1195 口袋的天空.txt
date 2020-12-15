@@ -1,0 +1,57 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,m,k;
+int f[20000];
+int ans;
+int tot;
+struct node
+{
+	int q,h,w;
+}a[20000];
+int find(int k)
+{
+	if(k==f[k])
+	{
+		return k;
+	}
+	return f[k]=find(f[k]);
+}
+bool cmp(node a,node b)
+{
+	return a.w<b.w;
+}
+void kr()
+{
+	sort(a+1,a+m+1,cmp);
+	for(int i=1;i<=m;i++)
+	{
+		int uq=find(a[i].q);
+		int uh=find(a[i].h);
+		if(uq!=uh)
+		{
+			f[uq]=uh;
+			tot++;
+			ans+=a[i].w;
+		}
+		if(tot==n-k)
+		{
+			printf("%d",ans);
+			return;
+		}
+	}
+	printf("No Answer");
+}
+int main()
+{
+	scanf("%d%d%d",&n,&m,&k);
+	for(int i=1;i<=m;i++)
+	{
+		scanf("%d%d%d",&a[i].q,&a[i].h,&a[i].w);
+	}
+	for(int i=1;i<=n;i++)
+	{
+		f[i]=i;
+	}
+	kr();
+	return 0;
+}

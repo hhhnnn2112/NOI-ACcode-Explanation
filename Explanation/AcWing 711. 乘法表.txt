@@ -1,0 +1,13 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+int main()
+{
+    ll n;
+    cin>>n;
+    for(ll i=1;i<=10;i++)
+    {
+        cout<<i<<" x "<<n<<" = "<<i*n<<"\n";
+    }
+    return 0;
+}

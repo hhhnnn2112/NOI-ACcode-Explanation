@@ -1,0 +1,36 @@
+#include <cstdio>
+#include <iostream>
+#include <string>
+using namespace std;
+int main(void)
+{
+    int T, n;
+    scanf("%d", &T);
+    while (T--)
+    {
+        scanf("%d", &n);
+        // 直接在循环体内定义，可以免去清零的麻烦。初始化为0。
+        int cnt[10] = {};
+        string s;
+        // 存进字符串
+        for (int i = 1; i <= n; i++)
+        {
+            int t = i;
+            while (t)
+            {
+                s += (t % 10) + '0';
+                t /= 10;
+            }
+        }
+        int len = s.size();
+        // 统计0~9数字的出现次数
+        for (int i = 0; i < len; i++)
+            cnt[s[i] - '0']++;
+        // 注意输出格式
+        for (int i = 0; i <= 8; i++)
+           printf("%d ", cnt[i]);
+        printf("%d", cnt[9]);
+        puts("");
+    }
+    return 0;
+}

@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+char s;
+double a[100][100];
+int main()
+{
+    cin>>s;
+    for(ll i=1;i<=12;i++)
+    {
+        for(ll j=1;j<=12;j++)
+        {
+            cin>>a[i][j];
+        }
+    }
+    ll p=11;
+    double sum=0;
+    for(ll i=1;i<=11;i++)
+    {
+        for(ll j=1;j<=p;j++)
+        {
+            sum+=a[i][j];
+        }
+        p--;//第一行11个数，第二行10个数，第三行9个数......
+    }
+    if(s=='S')
+    {
+        printf("%.1f",sum);
+    }
+    if(s=='M')
+    {
+        printf("%.1f",sum/66);//(11+1)*11/2
+    }
+    return 0;
+}
+
+作者：垫底PANDA
+链接：https://www.acwing.com/solution/content/24397/
+来源：AcWing
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

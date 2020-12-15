@@ -1,0 +1,21 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#define N 100
+int main()
+{
+    int n;  //输入的数字的个数
+    scanf("%d",&n);
+    int a[N];
+ 
+    for(int i=0; i<n; i++){  //输入数组
+        scanf("%d",&a[i]);
+    }
+ 
+    for(int i=n-1; i>=0; i--){  //输出数组
+        printf("%d ",a[i]);
+ 
+    }
+ 
+    return 0;
+}

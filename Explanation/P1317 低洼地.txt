@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,ans,a,b;
+bool nn;
+int main()
+{
+	cin>>n;
+	cin>>a;
+	for(int i=2;i<=n;i++)
+	{
+		cin>>b;
+		if(b<a)
+		{
+			nn=1;
+		}
+		if(a<b&&nn==1)
+		{
+			ans++;
+			nn=0;
+		}
+		a=b;
+	}
+	cout<<ans;
+	return 0;
+}

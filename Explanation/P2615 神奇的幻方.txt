@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,tema,temb,a[210][210];
+int main()
+{
+	cin>>n;
+	tema=1;
+	temb=n/2+1;
+	a[tema][temb]=1;
+	for(int i=2;i<=n*n;i++)
+	{
+		if(tema==1&&temb!=n)
+		{
+			tema=n;
+			temb++;
+			a[tema][temb]=i;
+		}
+		else if(tema!=1&&temb==n)
+		{
+			tema--;
+			temb=1;
+			a[tema][temb]=i;
+		}
+		else if(tema==1&&temb==n)
+		{
+			tema++;
+			a[tema][temb]=i;
+		}
+		else if(a[tema-1][temb+1]==0)
+		{
+			tema--;
+			temb++;
+			a[tema][temb]=i;
+		}
+		else
+		{
+			tema++;
+			a[tema][temb]=i;
+		}
+	}
+	for(int i=1;i<=n;i++)
+	{
+		for(int j=1;j<=n;j++)
+		{
+			cout<<a[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+	return 0;
+}

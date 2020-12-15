@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,m;
+int x,y;
+int ans;
+int dx[]={1,0,-1,0};
+int dy[]={0,1,0,-1};
+char mps[100][100];
+bool v[100][100];
+bool in(int x,int y)
+{
+	return (x>=1)&&(x<=m)&&(y>=1)&&(y<=n);
+}
+void dfs(int x,int y)
+{
+	if((!in(x,y))||(mps[x][y]=='#')||(v[x][y]))
+	{
+		return;
+	}
+	ans++;
+	v[x][y]=1;
+	for(int i=0;i<4;i++)
+	{
+		dfs(x+dx[i],y+dy[i]);
+	}
+}
+int main()
+{
+	scanf("%d%d",&n,&m);
+	for(int i=1;i<=m;i++)
+	{
+		for(int j=1;j<=n;j++)
+		{
+			cin>>mps[i][j];
+			if(mps[i][j]=='@')
+			{
+				x=i;
+				y=j;
+			}
+		}
+	}
+	dfs(x,y);
+	printf("%d",ans);
+	return 0;
+}

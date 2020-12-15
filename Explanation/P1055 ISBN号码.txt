@@ -1,0 +1,30 @@
+    #include<iostream>
+    #include<cstdio>
+    using namespace std;
+    int main(){
+        int a[5],first,second,third,fourth,fifth,sum=0;
+        cin>>a[1];
+        getchar();
+        cin>>a[2];
+        getchar();
+        cin>>a[3];
+        getchar();
+        if(scanf("%d",&a[4])!=1)a[4]=10;
+        sum+=a[1];
+        first=a[2]/100;
+        second=(a[2]/10)%10;
+        third=a[2]%10;
+        sum=sum+first*2+second*3+third*4;
+        first=a[3]/10000;
+        second=(a[3]/1000)%10;
+        third=(a[3]/100)%10;
+        fourth=(a[3]/10)%10;
+        fifth=a[3]%10;
+        sum=sum+first*5+second*6+third*7+fourth*8+fifth*9;
+        sum=sum%11;
+        if(sum==a[4])cout<<"Right";
+        else{ if(sum!=10)printf("%d-%d-%d-%d",a[1],a[2],a[3],sum);
+                else printf("%d-%d-%d-X",a[1],a[2],a[3]);
+        }
+        return 0;
+    }

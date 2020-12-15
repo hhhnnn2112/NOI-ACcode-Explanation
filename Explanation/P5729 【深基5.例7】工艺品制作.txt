@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+int w,x,p;
+int www[100][100][100];
+int h;
+int main()
+{
+	cin>>w>>x>>h;
+	cin>>p;
+	for(int i=1;i<=p;i++)
+	{
+		int a,b,c,d,e,f;
+		cin>>a>>b>>c>>d>>e>>f;
+		for(int j=a;j<=d;j++)
+		{
+			for(int k=b;k<=e;k++)
+			{
+				for(int l=c;l<=f;l++)
+				{
+					www[j][k][l]=1;
+				}
+			}
+		}
+	}
+	int ans=0;
+	for(int i=1;i<=w;i++)
+	{
+		for(int j=1;j<=x;j++)
+		{
+			for(int k=1;k<=h;k++)
+			{
+				if(www[i][j][k]==0)
+				{
+					ans++;
+				}
+			}
+		}
+	}
+	cout<<ans;
+	return 0;
+}

@@ -1,0 +1,14 @@
+
+#include<iostream>
+#include<stdio.h>
+using namespace std;
+int main ()
+{
+	int n,j,s=1,sum=0;
+	cin>>n;
+	for(j=1;j<=n;j++){
+		s=s*j;
+		sum+=s;
+	}
+	cout<<sum;
+	return 0;

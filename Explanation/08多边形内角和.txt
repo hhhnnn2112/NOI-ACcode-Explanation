@@ -1,0 +1,14 @@
+
+#include <iostream>
+using namespace std;
+int main()
+{
+	int n,a,i,s=0;
+	cin>>n;
+	for(i=1;i<n;i++)
+	{
+		cin>>a;
+		s+=a;
+	}
+	cout<<(n-2)*180-s;
+	return 0;

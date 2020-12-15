@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+int x[100],y[100],r[100];
+int n;
+int ans;
+int x1,yy,x2,y2;
+double dis(int xx1,int yy1,int xx2,int yy2)
+{
+	return sqrt((xx1-xx2)*(xx1-xx2)+(yy1-yy2)*(yy1-yy2));
+}
+int main()
+{
+	cin>>n;
+	for(int i=1;i<=n;i++)
+	{
+		cin>>x[i];
+	}
+	for(int i=1;i<=n;i++)
+	{
+		cin>>y[i];
+	}
+	for(int i=1;i<=n;i++)
+	{
+		cin>>r[i];
+	}
+	cin>>x1>>yy>>x2>>y2;
+	for(int i=1;i<=n;i++)
+	{
+		if((dis(x1,yy,x[i],y[i])<r[i])^(dis(x2,y2,x[i],y[i])<r[i]))
+		{
+			ans++;
+		}
+	}
+	cout<<ans;
+	return 0;
+}

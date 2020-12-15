@@ -1,0 +1,31 @@
+
+#include<cstdio>
+#include<cstring>
+char a1[35];
+int a[35],c[35];
+int x;
+bool flag = 0;
+int main()
+{
+	gets(a1);
+	int n = strlen(a1);
+	for(int i = 0; i < n; ++i)
+		a[i] = a1[i]-'0';	 
+	for(int k = 2; k <= 9; ++k)
+	{
+		x = 0;//新的被除数 
+		for(int i = 0; i < n; ++i)
+		{
+			 x = x*10+a[i];
+			 x = x%k;
+		}
+		if(x==0) 
+		{
+			flag = 1;
+			printf("%d ",k);
+		}
+	}
+	if(flag==0) 
+		printf("none");
+	return 0;
+}

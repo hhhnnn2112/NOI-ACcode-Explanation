@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int n,k,ans,nn;
+	cin>>n>>k;
+	ans=n;
+	nn=ans;
+	for(;nn>=k;)
+	{
+		nn-=k;
+		ans++;
+		nn++;
+	}
+	cout<<ans;
+	return 0;
+}

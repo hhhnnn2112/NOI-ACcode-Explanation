@@ -1,0 +1,12 @@
+
+#include <iostream>
+using namespace std;
+int main()
+{
+	int r,y,i;
+	double s,m;
+	cin>>r>>m>>y;
+	for(i=0;i<y;i++)
+		m*=(1+0.01*r);
+	cout<<(int)m;                //把m强制转换成int类型
+	return 0;

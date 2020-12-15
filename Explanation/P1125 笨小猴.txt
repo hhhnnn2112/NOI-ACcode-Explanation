@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+map<char,int>a;
+int maxn=0,minn=1e9;
+string ss;
+bool zs(int a)
+{
+	if(a==0||a==1)
+	{
+		return false;
+	}
+	if(a==2)
+	{
+		return true;
+	}
+	for(int i=2;i*i<=a;i++)
+	{
+		if(a&i==0)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+int main()
+{
+	cin>>ss;
+	for(int i=0;i<ss.size();i++)
+	{
+		a[ss[i]]++;
+		if(a[ss[i]]>maxn)
+		{
+			maxn=a[ss[i]];
+		}
+	}
+	for(int i=0;i<ss.size();i++)
+	{
+		if(a[ss[i]]<minn)
+		{
+			minn=a[ss[i]];
+		}
+	}
+	int aa=maxn-minn;
+	if(zs(aa))
+	{
+		printf("Lucky Word\n%d",aa);
+	}
+	else
+	{
+		printf("No Answer\n0");
+	}
+}

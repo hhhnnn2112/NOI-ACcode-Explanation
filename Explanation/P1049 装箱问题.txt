@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,m,f[30000];
+int a[100];
+int main()
+{
+	scanf("%d%d",&m,&n);
+	for(int i=1;i<=n;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	for(int i=1;i<=n;i++)
+	{
+		for(int j=m;j>=a[i];j--)
+		{
+			f[j]=max(f[j],f[j-a[i]]+a[i]);
+		}
+	}
+	printf("%d",m-f[m]);
+	return 0;
+}

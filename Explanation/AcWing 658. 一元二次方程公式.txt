@@ -1,0 +1,21 @@
+#include<cstdio>
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main()
+{
+    double a,b,c;
+    cin>>a>>b>>c;
+    if(b*b-4*a*c<0||a==0)
+    {
+        cout<<"Impossivel calcular";
+        return 0;
+    }
+    else printf("R1 = %.5f\nR2 = %.5f\n",(-b+sqrt(b*b-4*a*c))/(2*a),(-b-sqrt(b*b-4*a*c))/(2*a));
+    return 0;
+}
+
+作者：wkj
+链接：https://www.acwing.com/solution/content/2673/
+来源：AcWing
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

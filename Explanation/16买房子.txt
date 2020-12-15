@@ -1,0 +1,19 @@
+
+#include <stdio.h>
+using namespace std;
+int main()
+{
+	double n,k,m,s=200,a=0;        //n为年薪，k为增长率，m为买下房子的时间，a为第几年后的年薪和
+	scanf("%lf %lf",&n,&k);
+	for(m=1;m<=20;m++)
+	{
+		a=a+n;                        //年薪相加
+		if(a>=s)                    //年薪和大于房价
+		{
+			printf("%g",m);
+			return 0;
+		}
+		s=s*(k/100+1);                //增长后的房价
+	}
+	printf("Impossible");
+	return 0;

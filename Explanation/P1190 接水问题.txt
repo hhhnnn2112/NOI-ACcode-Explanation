@@ -1,0 +1,24 @@
+    #include <iostream>
+    using namespace std;
+    int s[11000],ans;    // 根据t的终止条件来想下s的大小
+	int main()
+	{
+	int n,m;cin>>n>>m;
+    for(int i=1;i<=n;i++) cin>>s[i];    //  输入每个学生的接水量
+	int t=m+1;   // t用来记录下个学生的编号 
+	while(t<=n+m)
+	{
+		for(int i=1;i<=m;i++)     //  枚举m个水龙头 
+		{
+			s[i]--;
+			if(s[i]==0)
+			{
+				s[i]=s[t];     //  如果这个学生的水接完了 模拟换下一个学生来这个水龙头
+				t++; 
+			}
+		}
+		ans++;      //  以上是模拟的1秒钟的接水时间 所有ans加一 
+	}
+		cout<<ans;
+		return 0;
+	} 

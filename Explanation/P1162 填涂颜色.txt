@@ -1,0 +1,69 @@
+#include<bits/stdc++.h>
+using namespace std;
+int a[50][50];
+int n;
+int x,y;
+int dx[]={0,0,1,-1};
+int dy[]={1,-1,0,0};
+bool cmd(int a,int b)
+{
+	return a>=0&&a<=n&&b>=0&&b<=n;
+}
+void dfs(int x,int y)
+{
+	a[x][y]=-1;
+	for(int i=0;i<4;i++)
+	{
+		int nx=x+dx[i];
+		int ny=y+dy[i];
+		if(cmd(nx,ny)&&a[nx][ny]==0)
+		{
+			dfs(nx,ny);
+		}
+	}
+}
+int main()
+{
+	scanf("%d",&n);
+	for(int i=0;i<n;i++)
+	{
+		for(int j=0;j<n;j++)
+		{
+			scanf("%d",&a[i][j]);
+		}
+	}
+	for(int i=0;i<n;i++)
+	{
+		if(a[i][0]==0)dfs(i,0);
+		if(a[i][n-1]==0)dfs(i,n-1);
+	}
+	for(int i=0;i<n;i++)
+	{
+		if(a[0][i]==0)dfs(0,i);
+		if(a[n-1][i]==0)dfs(n-1,i);
+	}
+	for(int i=0;i<n;i++)
+	{
+		for(int j=0;j<n;j++)
+		{
+			if(a[i][j]==0)
+			{
+				printf("2");
+			}
+			if(a[i][j]==-1)
+			{
+				printf("0");
+			}
+			if(a[i][j]==1)
+			{
+				printf("1");
+			}
+			if(j!=n-1)
+			{
+				printf(" ");
+			}
+		}
+		cout<<endl;
+	}
+	return 0;
+}

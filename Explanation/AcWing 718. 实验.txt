@@ -1,0 +1,39 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+int main()
+{
+    int n;
+    int a;
+    char t;
+    int sum=0,sum1=0,sum2=0,sum3=0;//sum1表示兔子,sum2表示老鼠,sum3表示青蛙
+    double s1,s2,s3;
+    cin>>n;
+    for(int i=1;i<=n;i++)
+    {
+        cin>>a>>t;
+        if(t=='C')
+            sum1+=a;
+        else if(t=='R')
+            sum2+=a;
+        else
+            sum3+=a;
+        sum+=a;
+    }
+    s1=(double)sum1/(double)sum*100;
+    s2=(double)sum2/(double)sum*100;
+    s3=(double)sum3/(double)sum*100;
+    cout<<"Total: "<<sum<<" animals"<<endl;
+    cout<<"Total coneys: "<<sum1<<endl;
+    cout<<"Total rats: "<<sum2<<endl;
+    cout<<"Total frogs: "<<sum3<<endl;
+    printf("Percentage of coneys: %.2lf %\n",s1);
+    printf("Percentage of rats: %.2lf %\n",s2);
+    printf("Percentage of frogs: %.2lf %\n",s3);
+    return 0;
+}
+
+作者：只要是你呀ღ
+链接：https://www.acwing.com/solution/content/9681/
+来源：AcWing
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

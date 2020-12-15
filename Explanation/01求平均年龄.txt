@@ -1,0 +1,14 @@
+#include <stdio.h>
+using namespace std;
+int main ()
+{
+	int n,a,i;
+	float sum=0;
+	scanf("%d",&n);
+	for(i=1;i<=n;i++)
+	{
+		scanf("%d",&a);
+		sum+=a;
+	}
+	printf("%.2f",sum/n);
+	return 0;

@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,ans,prime[800001],x;
+bool visit[1299710];
+int main() {
+	scanf("%d",&x);
+    memset(visit,0,sizeof(visit));
+    memset(prime,0,sizeof(prime));
+    visit[1]=visit[0]=true;
+    for(register int i=2; i<=1299709; ++i) {
+        if(!visit[i]) {
+            prime[++ans]=i;
+        }
+        for(register int j=1; prime[j]*i<=1299709&&j<=ans; ++j) {
+            visit[i*prime[j]]=true;
+            if(!(i%prime[j])) break;
+        }
+    }
+    while(x) {
+        if(!visit[x]) printf("0\n");
+        else {
+            for(register int i=1; i<=ans; ++i)
+                if(prime[i]>x) {
+                    printf("%d\n",prime[i]-prime[i-1]);
+                    break;
+                }
+        }
+        scanf("%d",&x);
+    }
+    return 0;
+}

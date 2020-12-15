@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+int a[102][102];
+int m,n;
+char tem;
+const int dx[4]={0,0,1,-1};
+const int dy[4]={1,-1,0,0};
+bool in(int x,int y)
+{
+	return x>=0&&x<n&&y>=0&&y<m;
+}
+void dfs(int x,int y)
+{
+	a[x][y]=0;
+	for(int i=0;i<4;i++)
+	{
+		int nx=x+dx[i];
+		int ny=y+dy[i];
+		if(in(nx,ny)&&a[nx][ny]!=0)
+		{
+			dfs(nx,ny);
+		}
+	}
+}
+int main()
+{
+	int ans=0;
+	scanf("%d%d",&n,&m);
+	for(int i=0;i<n;i++)
+	{
+		for(int j=0;j<m;j++)
+		{
+			scanf(" %c",&tem);
+			a[i][j]=tem-48;
+		}
+	}
+	for(int i=0;i<n;i++)
+	{
+		for(int j=0;j<m;j++)
+		{
+			if(a[i][j]!=0)
+			{
+				ans++;
+				dfs(i,j);
+			}
+		}
+	}
+	printf("%d",ans);
+}

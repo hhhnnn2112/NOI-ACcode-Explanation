@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+int a[5000],tem,ans=1e9;
+int n,m;
+int main()
+{
+	cin>>n>>m;
+	for(int i=1;i<=n;i++)
+	{
+		cin>>a[i];
+		if(i<=m)
+		{
+			tem+=a[i];
+			continue;
+		}
+		ans=min(ans,tem);
+		tem-=a[i-m];
+		tem+=a[i];
+	}
+	ans=min(ans,tem);
+	cout<<ans;
+}

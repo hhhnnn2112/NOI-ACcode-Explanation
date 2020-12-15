@@ -1,0 +1,2227 @@
+01:统计数字字符个数
+描述
+
+输入一行字符，统计出其中数字字符的个数。
+
+输入
+
+一行字符串，总长度不超过255。
+
+输出
+
+输出为1行，输出字符串里面数字字符的个数。
+
+样例输入
+
+Peking University is set up at 1898.
+样例输出
+
+4
+#include<bits/stdc++.h>
+using namespace std;
+int main ()
+{
+	char s[255] ;
+	gets(s);
+	
+	int len = strlen(s);
+	
+	int count  = 0;
+	for(int i = 0; i < len ;i++)
+	{
+		if( s[i] - '0' <= 9 &&  s[i] - '0' >= 0 )
+		count ++ ;
+	}
+	cout << count << endl;
+	return 0;
+} 
+ 
+
+02:找第一个只出现一次的字符
+描述
+
+给定一个只包含小写字母的字符串，请你找到第一个仅出现一次的字符。如果没有，输出no。
+
+输入
+
+一个字符串，长度小于100000。
+
+输出
+
+输出第一个仅出现一次的字符，若没有则输出no。
+
+样例输入
+
+abcabd
+样例输出
+
+c
+#include<iostream> 
+#include<cstring> 
+#include<stdio.h>
+ 
+using namespace std; 
+main () 
+{ 
+	int  a[27] = {0};
+	char c[100005];
+	cin >> c;
+	char b;
+	int len = strlen(c);
+ 
+	for(int i = 0; i < len; i++)
+	{
+		a[ c[i]-'a' ]++;
+	}
+	int flag = 0;
+	for(int i = 0; i < len; i++)
+	{
+		if(a[c[i]-'a'] == 1)
+		{
+			b = c[i];
+			flag = 1;
+			break;
+		}
+	}
+	if(!flag)
+	cout << "no" ;
+	else
+	cout << b;
+	
+}
+03:基因相关性
+描述
+
+为了获知基因序列在功能和结构上的相似性，经常需要将几条不同序列的DNA进行比对，以判断该比对的DNA是否具有相关性。
+
+现比对两条长度相同的DNA序列。首先定义两条DNA序列相同位置的碱基为一个碱基对，如果一个碱基对中的两个碱基相同的话，则称为相同碱基对。接着计算相同碱基对占总碱基对数量的比例，如果该比例大于等于给定阈值时则判定该两条DNA序列是相关的，否则不相关。
+
+输入
+
+有三行，第一行是用来判定出两条DNA序列是否相关的阈值，随后2行是两条DNA序列（长度不大于500）。
+
+输出
+
+若两条DNA序列相关，则输出“yes”，否则输出“no”。
+
+样例输入
+
+0.85 
+ATCGCCGTAAGTAACGGTTTTAAATAGGCC
+ATCGCCGGAAGTAACGGTCTTAAATAGGCC
+样例输出
+
+yes
+ 
+
+#include<iostream> 
+#include<cstring> 
+#include<string>
+ 
+using namespace std; 
+main () 
+{ 
+ 
+	char str1[505],str2[505];
+	double Similar;
+	cin >> Similar;
+	cin >> str1;
+	cin >> str2;
+	double count = 0;
+	double len = strlen(str1); 
+	for(int i = 0; i < len; i++)
+	{
+		if( str1[i] == str2[i])
+		count ++;
+	}
+	if(Similar > count/len)
+	cout << "no";
+	else
+	cout << "yes";
+}
+04:石头剪子布
+描述
+
+石头剪子布，是一种猜拳游戏。起源于中国，然后传到日本、朝鲜等地，随着亚欧贸易的不断发展它传到了欧洲，到了近现代逐渐风靡世界。简单明了的规则，使得石头剪子布没有任何规则漏洞可钻，单次玩法比拼运气，多回合玩法比拼心理博弈，使得石头剪子布这个古老的游戏同时用于“意外”与“技术”两种特性，深受世界人民喜爱。
+
+游戏规则：石头打剪刀，布包石头，剪刀剪布。
+
+现在，需要你写一个程序来判断石头剪子布游戏的结果。
+
+输入
+
+输入包括N+1行：
+第一行是一个整数N，表示一共进行了N次游戏。1 <= N <= 100。
+接下来N行的每一行包括两个字符串，表示游戏参与者Player1，Player2的选择（石头、剪子或者是布）：
+S1 S2
+字符串之间以空格隔开S1,S2只可能取值在{"Rock", "Scissors", "Paper"}（大小写敏感）中。
+
+输出
+
+输出包括N行，每一行对应一个胜利者（Player1或者Player2），或者游戏出现平局，则输出Tie。
+
+样例输入
+
+3 
+Rock Scissors 
+Paper Paper 
+Rock Paper
+样例输出
+
+Player1 
+Tie 
+Player2
+提示
+
+Rock是石头，Scissors是剪刀，Paper是布。
+
+#include<iostream> 
+#include<cstring> 
+#include<string>
+ 
+using namespace std; 
+main () 
+{ 
+	char a[10],b[10];
+	int t;
+	 cin >> t; 
+	while (t--)
+	{
+		cin >> a;
+		cin >> b;
+ 
+		if(a[0] == b[0])
+		cout << "Tie" << endl;
+		else if( b[0] == 'S' && a[0] == 'R')
+		cout << "Player1" << endl;
+		else if( b[0] == 'P' && a[0] == 'S')
+		cout << "Player1" << endl;
+		else if( b[0] == 'R' && a[0] == 'P') 
+		cout << "Player1" << endl;
+		else
+		cout << "Player2" << endl;
+		 
+	}
+	
+}
+ 
+
+05:输出亲朋字符串
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+编写程序，求给定字符串s的亲朋字符串s1。
+
+亲朋字符串s1定义如下：给定字符串s的第一个字符的ASCII值加第二个字符的ASCII值，得到第一个亲朋字符； 给定字符串s的第二个字符的ASCII值加第三个字符的ASCII值，得到第二个亲朋字符；依此类推，直到给定字符串s的倒数第二个字符。亲朋字符串的最 后一个字符由给定字符串s的最后一个字符ASCII值加s的第一个字符的ASCII值。
+
+输入
+
+输入一行，一个长度大于等于2，小于等于100的字符串。字符串中每个字符的ASCII值不大于63。
+
+输出
+
+输出一行，为变换后的亲朋字符串。输入保证变换后的字符串只有一行。
+
+样例输入
+
+1234
+样例输出
+
+cege
+#include<iostream> 
+#include<cstring> 
+#include<string>
+ 
+#include<stdio.h>
+using namespace std; 
+main () 
+{ 
+	char a[105];
+	char c;
+	gets(a);
+	int len = strlen(a);
+	for(int i = 0; i < len; i++)
+	{
+			c = a[i] + a[(i+1)%len];
+			cout << c;
+	}
+}
+ 
+
+06:合法 C 标识符
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+给定一个不包含空白符的字符串，请判断是否是C语言合法的标识符号（注：题目保证这些字符串一定不是C语言的保留字）。
+
+C语言标识符要求：
+
+1. 非保留字；
+
+2. 只包含字母、数字及下划线（“_”）。
+
+3. 不以数字开头。
+
+输入
+
+一行，包含一个字符串，字符串中不包含任何空白字符，且长度不大于20。
+
+输出
+
+一行，如果它是C语言的合法标识符，则输出yes，否则输出no。
+
+样例输入
+
+RKPEGX9R;TWyYcp
+样例输出
+
+no
+#include<iostream> 
+#include<cstring> 
+#include<string>
+ 
+#include<stdio.h>
+using namespace std; 
+main () 
+{ 
+	char a[25];
+	cin >> a;
+	int len = strlen(a);
+	int i, flag = 0;
+	for( i = 0; i < len; i++)
+	{
+		if(a[0] - '0' <= 9 && a[0] - '0' >= 0)
+		{
+			flag = 1;
+			break;
+		}
+		else if(a[i] >= 'A' && a[i] <= 'Z')
+		{
+			continue;
+		} 
+		else if( a[i] >= 'a' && a[i] <= 'z')
+		{
+			continue;
+		}
+		else if( a[i] >= '0' && a[i] <= '9')
+		{
+			continue;
+		}
+		else if( a[i] == '_')
+		continue ;
+		else
+		flag = 1;
+	}
+	if(flag)
+	cout << "no" ;
+	else 
+	cout << "yes" ;
+}
+07:配对碱基链
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+脱氧核糖核酸（DNA）由两条互补的碱基链以双螺旋的方式结合而成。而构成DNA的碱基共有4种，分别为腺瞟呤（A）、鸟嘌呤（G）、胸腺嘧啶（T）和胞嘧啶（C）。我们知道，在两条互补碱基链的对应位置上，腺瞟呤总是和胸腺嘧啶配对，鸟嘌呤总是和胞嘧啶配对。你的任务就是根据一条单链上的碱基序列，给出对应的互补链上的碱基序列。
+
+输入
+
+一个字符串，表示一条碱基链。这个字符串只含有大写字母A、T、G、C，分别表示腺瞟呤、胸腺嘧啶、鸟嘌呤和胞嘧啶。字符串长度不超过255。
+
+输出
+
+一个只含有大写字母A、T、G、C的字符串，为与输入的碱基链互补的碱基链。
+
+样例输入
+
+ATATGGATGGTGTTTGGCTCTG
+样例输出
+
+TATACCTACCACAAACCGAGAC
+#include<iostream> 
+#include<cstring> 
+#include<string>
+ 
+#include<stdio.h>
+using namespace std; 
+main () 
+{ 
+	char a[255];
+	scanf("%s",&a);
+	int len = strlen(a);
+	for(int i = 0; i < len; i++)
+	{
+		if(a[i] == 'A')
+		a[i] = 'T';
+		else if( a[i] == 'T')
+		a[i] = 'A';
+		else if( a[i] == 'G')
+		a[i] = 'C';
+		else
+		a[i] = 'G';
+	}
+	cout << a;
+}
+08:字符替换
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+把一个字符串中特定的字符全部用给定的字符替换，得到一个新的字符串。
+
+输入
+
+只有一行，由一个字符串和两个字符组成，中间用单个空格隔开。字符串是待替换的字符串，字符串长度小于等于30个字符，且不含空格等空白符；
+接下来一个字符为需要被替换的特定字符；
+接下来一个字符为用于替换的给定字符。
+
+输出
+
+一行，即替换后的字符串。
+
+样例输入
+
+hello-how-are-you o O
+样例输出
+
+hellO-hOw-are-yOu
+#include<iostream> 
+#include<cstring> 
+#include<string>
+ 
+#include<stdio.h>
+using namespace std; 
+main () 
+{ 
+	char a[35];
+	cin >> a;
+	int len = strlen(a);
+	char ch,c;
+	cin >> ch >> c;
+	for(int i = 0; i < len; i++)
+	{
+		if(a[i] == ch)
+		a[i] = c;
+	}
+	cout << a;
+}
+09:密码翻译
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+在情报传递过程中，为了防止情报被截获，往往需要对情报用一定的方式加密，简单的加密算法虽然不足以完全避免情报被破译，但仍然能防止情报被轻易的识别。我们给出一种最简的的加密方法，对给定的一个字符串，把其中从a-y，A-Y的字母用其后继字母替代，把z和Z用a和A替代，其他非字母字符不变，则可得到一个简单的加密字符串。
+
+输入
+
+输入一行，包含一个字符串，长度小于80个字符。
+
+输出
+
+输出每行字符串的加密字符串。
+
+样例输入
+
+Hello! How are you!
+样例输出
+
+Ifmmp! Ipx bsf zpv!
+#include<iostream> 
+#include<cstring> 
+#include<string>
+ 
+#include<stdio.h>
+using namespace std; 
+main () 
+{ 
+	char a[85];
+	gets(a);
+	int len = strlen(a);
+	
+	
+	for(int i = 0; i < len; i++)
+	{
+		if(a[i] == 'z')
+		{
+			a[i] = 'a';
+		
+		}
+		else if(a[i] == 'Z')
+		{
+			a[i] = 'A';
+			
+		}
+		else if( a[i] <= 'y' && a[i] >= 'a' )
+		a[i] = a[i] + 1; 
+		else if (a[i] <= 'Y' && a[i] >= 'A')
+		a[i] = a[i] + 1;
+		else 
+		a[i] = a[i];
+	}
+	cout << a;
+}
+10:简单密码
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+Julius Caesar曾经使用过一种很简单的密码。对于明文中的每个字符，将它用它字母表中后5位对应的字符来代替，这样就得到了密文。比如字符A用F来代替。如下是密文和明文中字符的对应关系。
+
+密文
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+
+明文
+V W X Y Z A B C D E F G H I J K L M N O P Q R S T U
+
+你的任务是对给定的密文进行解密得到明文。
+
+你需要注意的是，密文中出现的字母都是大写字母。密文中也包括非字母的字符，对这些字符不用进行解码。
+
+输入
+
+一行，给出密文，密文不为空，而且其中的字符数不超过200。
+
+输出
+
+输出一行，即密文对应的明文。
+
+样例输入
+
+NS BFW, JAJSYX TK NRUTWYFSHJ FWJ YMJ WJXZQY TK YWNANFQ HFZXJX
+样例输出
+
+IN WAR, EVENTS OF IMPORTANCE ARE THE RESULT OF TRIVIAL CAUSES
+#include<iostream> 
+#include<cstring> 
+#include<string>
+ 
+#include<stdio.h>
+using namespace std; 
+main () 
+{ 
+	char a[85];
+	gets(a);
+	int len = strlen(a);
+	
+	
+	for(int i = 0; i < len; i++)
+	{
+		
+		if (a[i] <= 'Z' && a[i] >= 'A')
+		a[i] = (a[i] - 'A' - 5 + 26) % 26  + 65;
+		else 
+		a[i] = a[i];
+	}
+	cout << a;
+}
+11:潜伏者
+描述
+
+R国和S国正陷入战火之中，双方都互派间谍，潜入对方内部，伺机行动。
+
+历经艰险后，潜伏于S国的R国间谍小C终于摸清了S国军用密码的编码规则：
+
+1、    S国军方内部欲发送的原信息经过加密后在网络上发送，原信息的内容与加密后所的内容均由大写字母‘A’—‘Z’构成（无空格等其他字母）。
+
+2、    S国对于每个字母规定了对应的“密字”。加密的过程就是将原信息中的所有字母替换为其对应的“密字”。
+
+3、    每个字母只对应一个唯一的“密字”，不同的字母对应不同的“密字”。“密字”可以和原字母相同。
+
+例如，若规定‘A’的密字为‘A’，‘B’的密字为‘C’（其他字母及密字略），则原信息“ABA”被加密为“ACA”。
+
+现在，小C通过内线掌握了S国网络上发送的一条加密信息及其对应的原信息。小C希望能通过这条信息，破译S国的军用密码。小C的破译过程是这样的：扫描原信息，对于原信息中的字母x（代表任一大写字母），找到其在加密信息中的对应大写字母y，并认为在密码里y是x的密字。如此进行下去直到停止于如下的某个状态：
+
+1、    所有信息扫描完毕，‘A’—‘Z’所有26个字母在原信息中均出现过并获得了相应的“密字”。
+
+2、    所有信息扫描完毕，但发现存在某个（或某些）字母在原信息中没有出现。
+
+3、    扫描中发现掌握的信息里有明显的自相矛盾或错误（违反S过密码的编码规则）。例如某条信息“XYZ”被翻译为“ABA”就违反了“不同字母对应不同密字”的规则。
+
+在小C忙得头昏脑胀之际，R国司令部又发来电报，要求他翻译另外一条从S国刚刚截取到的加密信息。现在请你帮助小C：通过内线掌握的信息，尝试破译密码。然后利用破译的密码，翻译电报中的加密信息。
+
+输入
+
+共3行，每行为一个长度在1到100之间的字符串。
+第1行为小C掌握的一条加密信息。
+第2行为第1行的加密信息所对应的原信息。
+第3行为R国司令部要求小C翻译的加密信息。
+输入数据保证所有字符串仅由大写字母‘A’—‘Z’构成，且第1行长度与第2行相等。
+
+输出
+
+共1行。
+若破译密码停止时出现2，3两种情况，请你输出“Failed”（不含引号，注意首字母大写，其它小写）。
+否则请输出利用密码翻译电报中加密信息后得到的原信息。
+
+样例输入
+
+样例 #1：
+AA
+AB
+EOWIE
+ 
+样例 #2：
+QWERTYUIOPLKJHGFDSAZXCVBN
+ABCDEFGHIJKLMNOPQRSTUVWXY
+DSLIEWO
+ 
+样例 #3：
+MSRTZCJKPFLQYVAWBINXUEDGHOOILSMIJFRCOPPQCEUNYDUMPP
+YIZSDWAHLNOVFUCERKJXQMGTBPPKOIYKANZWPLLVWMQJFGQYLL
+FLSO
+ 
+样例 #4：
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+BCDEFGHIJKLMNOPQRSTUVWXYZB
+AZB
+样例输出
+
+样例 #1：
+Failed
+ 
+样例#2：
+Failed
+ 
+样例#3：
+NOIP
+ 
+样例#4：
+Failed
+提示
+
+输入输出样例1说明：原信息中的字母‘A’和‘B’对应相同的密字，输出“Failed”。
+
+输入输出样例2说明：字母‘Z’在原信息中没有出现，输出“Failed”。
+
+#include<iostream>
+#include<cstring>
+using namespace std;
+ 
+ 
+int main ()
+{
+	char a[26] ,b[26];
+	bool c[26] ,d[26];
+	memset(a, '\0', sizeof(a));
+	memset(b, '\0', sizeof(b));
+	memset(c, 0, sizeof(c)); 
+	memset(d, 0, sizeof(d)); 
+	string s1, s2, s3;
+	cin >> s1 >> s2 >> s3;
+	int s1len = s1.length();
+	for (int i = 0; i < s1len; i++) 
+	{
+		if(a[s1[i] - 'A'] == '\0')
+			a[s1[i] - 'A'] = s2[i];
+			
+		else if(a[s1[i] - 'A'] != '\0' && s2[i] != a[s1[i] - 'A'])
+		{
+			cout << "Failed";
+			return 0;
+		}
+	}
+	
+	for(int i = 0 ; i < s1.length(); i++)
+	{
+		c[s1[i] - 'A'] = 1;
+		d[s2[i] - 'A'] = 1;
+	}
+	
+	for(int i = 0; i < 26 ; i++){
+		if(c[i] != 1 || d[i] != 1)
+		{
+			cout << "Failed";
+			return 0;
+		}
+	}
+	
+	
+	for (int i = 0; i < s1len; i++)
+	{
+		if(b[s2[i] - 'A'] == '\0')
+		b[s2[i] - 'A'] = s1[i];
+		
+		else if(b[s2[i] - 'A'] != '\0' && s1[i] != b[s2[i] - 'A'])
+		{
+			cout << "Failed";
+			return 0;
+		}
+	}
+	
+	
+	int s3len = s3.length();
+	for(int i = 0; i < s3len ; i++)
+	{
+		if(a[s3[i] - 'A'] == '\0')
+		{
+			cout << "Failed";
+			return 0;
+		}
+	}
+ 
+	for(int i = 0; i < s3len ; i++)
+	{
+		cout << a[s3[i] - 'A'];
+	}
+	
+	
+}
+12:加密的病历单
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+小英是药学专业大三的学生，暑假期间获得了去医院药房实习的机会。
+在药房实习期间，小英扎实的专业基础获得了医生的一致好评，得知小英在计算概论中取得过好成绩后，主任又额外交给她一项任务，解密抗战时期被加密过的一些伤员的名单。
+经过研究，小英发现了如下加密规律（括号中是一个“原文 -> 密文”的例子）
+1.  原文中所有的字符都在字母表中被循环左移了三个位置（dec  -> abz）
+2.  逆序存储（abcd -> dcba ）
+3.  大小写反转（abXY -> ABxy）
+
+输入
+
+一个加密的字符串。（长度小于50且只包含大小写字母）
+
+输出
+
+输出解密后的字符串。
+
+样例输入
+
+GSOOWFASOq
+样例输出
+
+Trvdizrrvj
+#include<iostream>
+#include<string.h>
+#include<cstring>
+using namespace std;
+int main (){
+	char a[52];
+	char b[52];
+	cin >> a;
+	int len = strlen(a);
+	for (int i = 0; i < len ; i++){
+		if(a[i] - 'a' >= 0 && a[i] - 'z' <= 25)
+		{
+			a[i] = (a[i] - 'a' + 3) % 26 + 97;
+			a[i] = a[i] - 32;
+		} 
+		else if(a[i] - 'A' >= 0 && a[i] - 'Z' <= 25)
+		{
+			a[i] = (a[i] - 'A' + 3) % 26 + 65;
+			a[i] = a[i] + 32;
+		}	
+	}
+	for(int i = 0; i < len;i++)
+	{
+		b[i] = a[len - i - 1];
+	}
+	for(int i = 0;i < len ;i++)
+	cout << b[i];
+	return 0;
+} 
+13:将字符串中的小写字母转换成大写字母
+描述
+
+给定一个字符串，将其中所有的小写字母转换成大写字母。
+
+输入
+
+输入一行，包含一个字符串（长度不超过100，可能包含空格）。
+
+输出
+
+输出转换后的字符串。
+
+样例输入
+
+helloworld123Ha
+样例输出
+
+HELLOWORLD123HA
+#include<iostream>
+#include<string.h>
+#include<cstring>
+using namespace std;
+int main (){
+	char a[100];
+	gets(a);
+	int len = strlen(a);
+	for (int i = 0; i < len ; i++){
+		if(a[i] - 'a' >= 0 && a[i] - 'z' <= 25)
+		{
+			a[i] = a[i] - 32;
+		} 
+		
+		else 
+		a[i] = a[i];
+	}
+	cout << a;
+	return 0;
+} 
+14:大小写字母互换
+描述
+
+把一个字符串中所有出现的大写字母都替换成小写字母，同时把小写字母替换成大写字母。
+
+输入
+
+输入一行：待互换的字符串。
+
+输出
+
+输出一行：完成互换的字符串（字符串长度小于80）。
+
+样例输入
+
+If so, you already have a Google Account. You can sign in on the right. 
+样例输出
+
+iF SO, YOU ALREADY HAVE A gOOGLE aCCOUNT. yOU CAN SIGN IN ON THE RIGHT. 
+#include<iostream>
+#include<string.h>
+#include<cstring>
+using namespace std;
+int main (){
+	char a[88];
+ 
+	cin.get(a,85);
+	int len = strlen(a);
+	for (int i = 0; i < len ; i++){
+		if(a[i] - 'a' >= 0 && a[i] - 'z' <= 25)
+		{
+			a[i] = a[i] - 32;
+		} 
+		else if(a[i] - 'A' >= 0 && a[i] - 'Z' <= 25)
+		{
+			a[i] = a[i] + 32;
+		}	
+		else 
+		a[i] = a[i];
+	}
+	cout << a;
+	return 0;
+} 
+15:整理药名
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+医生在书写药品名的时候经常不注意大小写，格式比较混乱。现要求你写一个程序将医生书写混乱的药品名整理成统一规范的格式，即药品名的第一个字符如果是字母要大写，其他字母小写。如将ASPIRIN、aspirin整理成Aspirin。
+
+输入
+
+第一行一个数字n，表示有n个药品名要整理，n不超过100。
+接下来n行，每行一个单词，长度不超过20，表示医生手书的药品名。药品名由字母、数字和-组成。
+
+输出
+
+n行，每行一个单词，对应输入的药品名的规范写法。
+
+样例输入
+
+4 
+AspiRin 
+cisapride 
+2-PENICILLIN 
+Cefradine-6
+样例输出
+
+Aspirin 
+Cisapride 
+2-penicillin 
+Cefradine-6
+#include<bits/stdc++.h>
+using namespace std;
+int main (){
+	
+	int n;
+	cin >> n;
+	while (n--)
+	{
+		char a[28];
+		
+		cin >> a;
+		int len = strlen(a);
+		if(a[0] >= 'a'  && a[0] <= 'z' )
+			a[0] -=  32;
+		else
+			a[0] = a[0];
+		for (int i = 1; i < len ; i++)
+		{
+		
+				if(a[i] >= 'A' && a[i] <= 'Z')
+					a[i] += 32;
+				else 
+					a[i] = a[i];	
+			
+		}
+		for(int i = 0; i < len; i++)
+		{
+			cout << a[i];
+		}
+		cout << endl;
+	}
+	
+	return 0;
+} 
+16:忽略大小写的字符串比较
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+一般我们用strcmp可比较两个字符串的大小，比较方法为对两个字符串从前往后逐个字符相比较（按ASCII码值大小比较），直到出现不同的字符或遇到'\0'为止。如果全部字符都相同，则认为相同；如果出现不相同的字符，则以第一个不相同的字符的比较结果为准（注意：如果某个字符串遇到'\0'而另一个字符串还未遇到'\0'，则前者小于后者）。但在有些时候，我们比较字符串的大小时，希望忽略字母的大小，例如"Hello"和"hello"在忽略字母大小写时是相等的。请写一个程序，实现对两个字符串进行忽略字母大小写的大小比较。
+
+输入
+
+输入为两行，每行一个字符串，共两个字符串。（每个字符串长度都小于80）
+
+输出
+
+如果第一个字符串比第二个字符串小，输出一个字符"<"；
+如果第一个字符串比第二个字符串大，输出一个字符">"；
+如果两个字符串相等，输出一个字符"="。
+
+样例输入
+
+Hello, how are you? 
+hello, How are you?
+样例输出
+
+=
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+int main (){
+	string a, b;
+	getline(cin,a);
+	getline(cin,b);
+	int alen = a.length();
+	int blen = b.length();
+	for(int i = 0; i < alen && i < blen; i++)
+	{
+			if(a[i] >= 65 && a[i] <= 90)
+			a[i] += 32;
+			
+			if(b[i] >= 65 && b[i] <= 90)
+			b[i] += 32;
+	}
+	if(a == b)
+	cout << "=";
+	else if(a < b)
+	cout << "<";
+	else 
+	cout << ">";
+	return 0;
+} 
+17:字符串判等
+总时间限制: 
+
+1000ms
+
+内存限制: 
+
+65536kB
+
+描述
+
+判断两个由大小写字母和空格组成的字符串在忽略大小写，且忽略空格后是否相等。
+
+输入
+
+两行，每行包含一个字符串。
+
+输出
+
+若两个字符串相等，输出YES，否则输出NO。
+
+样例输入
+
+a A bb BB ccc CCC
+Aa BBbb CCCccc
+样例输出
+
+YES
+ 
+
+#include<iostream>
+using namespace std;
+int main ()
+{
+	string s1, s2;
+	string s3, s4;
+	getline(cin,s1);
+	getline(cin,s2);
+	int s1len = s1.length();
+	int s2len = s2.length();
+	for (int i = 0; i < s1len; i++)
+	{
+		if(s1[i] <= 'Z' && s1[i] >= 'A')
+			s1[i] += 32;
+		if(s1[i] != ' ')
+			s3 += s1[i]; //把s1赋值到s3上
+	} 
+	for (int i = 0; i < s2len; i++)
+	{
+		if(s2[i] <= 'Z' && s2[i] >= 'A')
+			s2[i] += 32;
+		if(s2[i] != ' ')
+			s4 += s2[i];
+	} 
+	if(s3 == s4)
+	cout << "YES" << endl;
+	else
+	cout << "NO" << endl;
+	return 0;
+}
+18:验证子串
+总时间限制: 
+
+1000ms
+
+内存限制: 
+
+65536kB
+
+描述
+
+输入两个字符串，验证其中一个串是否为另一个串的子串。
+
+输入
+
+输入两个字符串， 每个字符串占一行，长度不超过200且不含空格。
+
+输出
+
+若第一个串s1是第二个串s2的子串，则输出(s1) is substring of (s2) 
+否则，若第二个串s2是第一个串s1的子串，输出(s2) is substring of (s1) 
+否则，输出 No substring。
+
+样例输入
+
+abc
+dddncabca
+样例输出
+
+abc is substring of dddncabca
+#include<iostream>
+#include<cstring>
+using namespace std;
+ 
+ 
+int main ()
+{
+	int next[205];
+	int s1len, s2len , s3len, s4len;
+	string s1, s2, s3 ,s4;
+	getline(cin,s1);
+	getline(cin,s2);
+	s1len = s1.length();
+	s2len = s2.length();
+	if(s1len < s2len)
+	{
+		s3 = s1;
+		s4 = s2;
+		s3len = s1len;
+		s4len = s2len;
+	}
+	else
+	{
+		s3 = s2;
+		s4 = s1;
+		s3len = s2len;
+		s4len = s1len;
+	}
+	
+	int k = -1;
+	int j = 0;
+	next[0] = -1;
+	next[1] = 0;
+	while (j < s3len)
+	{
+		if(k == -1 || s3[j] == s3[k])
+		{
+			j++;
+			k++;
+			next[j] = k;
+		}
+		else
+		k = next[k];
+	}
+	j = 0;
+	int i = 0;
+	while(i < s4len && j < s3len)
+	{
+		if( j == -1 || s3[j] == s4[i])
+		{
+			i++;
+			j++;
+		}
+		else if(j != -1 && s3[j] != s4[i])
+		j = next[j];
+	}
+	if(j == s3len)
+	cout << s3 << " is substring of " << s4 << endl;
+	else
+	cout <<  "No substring" << endl;
+}
+19:字符串移位包含问题
+描述
+
+对于一个字符串来说，定义一次循环移位操作为：将字符串的第一个字符移动到末尾形成新的字符串。
+
+给定两个字符串s1和s2，要求判定其中一个字符串是否是另一字符串通过若干次循环移位后的新字符串的子串。例如CDAA是由AABCD两次移位后产生的新串BCDAA的子串，而ABCD与ACBD则不能通过多次移位来得到其中一个字符串是新串的子串。
+
+输入
+
+一行，包含两个字符串，中间由单个空格隔开。字符串只包含字母和数字，长度不超过30。
+
+输出
+
+如果一个字符串是另一字符串通过若干次循环移位产生的新串的子串，则输出true，否则输出false。
+
+这题是有技巧的： 你把主串循环两次，然后匹配字串。
+
+样例输入
+
+AABCD CDAA
+样例输出
+
+true
+#include<iostream>
+#include<cstring>
+using namespace std;
+ 
+ 
+int main ()
+{
+	int next[205];
+	int s1len, s2len , s3len, s4len;
+	string s1, s2, s3 ,s4;
+	cin >> s1 >> s2;
+	s1len = s1.length();
+	s2len = s2.length();
+	if(s1len < s2len)
+	{
+		s3 = s1;
+		s4 = s2 + s2;
+		s3len = s1len;
+		s4len = s2len * 2;
+	}
+	else
+	{
+		s3 = s2;
+		s4 = s1 + s1;
+		s3len = s2len;
+		s4len = s1len * 2;
+	}
+	
+	int k = -1;
+	int j = 0;
+	next[0] = -1;
+	next[1] = 0;
+	while (j < s3len)
+	{
+		if(k == -1 || s3[j] == s3[k])
+		{
+			j++;
+			k++;
+			next[j] = k;
+		}
+		else
+		k = next[k];
+	}
+	j = 0;
+	int i = 0;
+	while(i < s4len && j < s3len)
+	{
+		if( j == -1 || s3[j] == s4[i])
+		{
+			i++;
+			j++;
+		}
+		else if(j != -1 && s3[j] != s4[i])
+		j = next[j];
+	}
+	if(j == s3len)
+	cout << "true" << endl;
+	else
+	cout <<  "false" << endl;
+}
+20:删除单词后缀
+描述
+
+给定一个单词，如果该单词以er、ly或者ing后缀结尾， 则删除该后缀（题目保证删除后缀后的单词长度不为0）， 否则不进行任何操作。
+
+输入
+
+输入一行，包含一个单词（单词中间没有空格，每个单词最大长度为32）。
+
+输出
+
+输出按照题目要求处理后的单词。
+
+样例输入
+
+referer
+样例输出
+
+refer
+#include<iostream>
+#include<cstring>
+using namespace std;
+ 
+ 
+int main ()
+{
+	string world;
+	cin >> world;
+	int len = world.length();
+	int i = len - 1;
+	if(len > 2 && world[i] == 'r' && world[i-1] == 'e')
+		len = len - 2;
+	else if(len > 3 && world[i] == 'g' && world[i-1] == 'n' && world [i - 2] == 'i')
+		len = len - 3;
+	else if( len > 2 && world[i] == 'y' && world[i-1] == 'l')
+		len = len - 2;
+	else
+		len = len ;
+	for( i = 0 ; i < len ; i++)
+	cout << world[i] ;
+	cout << endl;
+}
+
+21:单词替换
+描述
+
+输入一个字符串，以回车结束（字符串长度<=100）。该字符串由若干个单词组成，单词之间用一个空格隔开，所有单词区分大小写。现需要将其中的某个单词替换成另一个单词，并输出替换之后的字符串。
+
+输入
+
+输入包括3行，
+第1行是包含多个单词的字符串 s;
+第2行是待替换的单词a(长度 <= 100);
+第3行是a将被替换的单词b(长度 <= 100).
+
+s, a, b 最前面和最后面都没有空格.
+
+输出
+
+输出只有 1 行，将s中所有单词a替换成b之后的字符串。
+
+样例输入
+
+You want someone to help you 
+You 
+I
+样例输出
+
+I want someone to help you
+#include<iostream> 
+#include<cstring> 
+#include<string>
+ 
+using namespace std; 
+main () 
+{ 
+	string s1, s2, s3;
+	getline(cin, s1);
+	s1 = " " + s1 + " ";
+	int lens1 = s1.size();
+	getline(cin, s2);
+	getline(cin, s3);
+	s2 = " " + s2 + " ";
+	s3 = " " + s3 + " ";
+	int lens2 = s2.length();
+	int lens3 = s3.length();
+	for(int i = 0; (i = s1.find(s2, i)) >= 0; i += lens3 - 1)
+	{
+		s1.replace(i, lens2, s3);
+		lens1 = s1.size(); 
+	}
+	cout << s1.substr(1, lens1 - 2);
+}
+22:紧急措施
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+近日，一些热门网站遭受黑客入侵，这些网站的账号、密码及email的数据惨遭泄露。你在这些网站上注册若干账号（使用的用户名不一定相同），但是注册时使用了相同的email。你此时拿到了那份泄露的数据，希望尽快将自己的密码更改。策略如下：根据email找到你的用户名和密码，然后更改密码。更改的规则为：小写和大写交换，非字母字符保持不变。
+
+输入
+
+第一行为你的email地址，长度不超过50个字符且只包含字母、数字和‘@’符号。
+第二行为账号数N，N(0 < N < 10000)。
+接下来N行，每行表示一个账号，格式为：
+用户名 密码 email
+它们之间用单个空格分开。用户名、密码、email均不含空格，且长度不超过50个字符。
+
+输出
+
+有若干行，每行为你的一个账号，包括：你的账号，修改后的密码（之间用单个空格分隔）。
+如果没有你的账号，则输出empty。
+
+样例输入
+
+样例输入1：
+abc@pku.edu.cn
+5
+helloKitty iLoveCats abc@pku.edu.cn
+2012 maya2012 cplusplus@exam.com
+KittyCat 5iKitty abc@pku.edu.cn
+program password teacher@exam.com
+whoAmi Feb.29$ abc@pku.edu.cn
+
+样例输入2：
+abc@pku.edu.cn
+1
+2012 maya2012 cplusplus@exam.com
+样例输出
+
+样例输出1：
+helloKitty IlOVEcATS
+KittyCat 5IkITTY
+whoAmi fEB.29$
+
+样例输出2：
+empty
+#include<iostream>
+#include<cstring>
+using namespace std;
+int n;
+struct Node{
+	string username;
+	string password;
+	string email;
+}Node [10005];
+void exchange(string cemail){
+	bool flag = 0;
+	for(int i = 1; i <= n; i++){
+		if(cemail == Node[i].email)
+		{
+			flag = 1;
+			for(int j = 0; j < Node[i].password.length(); j++){
+				if(Node[i].password[j] <= 'Z' && Node[i].password[j] >= 'A')
+					Node[i].password[j] += 32;
+				else if(Node[i].password[j] <= 'z' && Node[i].password[j] >= 'a')
+					Node[i].password[j] -= 32;
+				else
+				continue;
+			}
+			cout << Node[i].username << " " << Node[i].password << endl;	
+		}
+	}
+	if(flag == 0)
+		cout << "empty" << endl; 
+}
+int main (){
+	string s;
+ 
+	cin >> s;
+	cin >> n;
+	for(int i = 1; i <= n; i++){
+		cin >> Node[i].username >> Node[i].password >> Node[i].email;
+	}
+	exchange(s);
+	return 0;
+} 
+23:过滤多余的空格
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+一个句子中也许有多个连续空格，过滤掉多余的空格，只留下一个空格。
+
+输入
+
+一行，一个字符串（长度不超过200），句子的头和尾都没有空格。
+
+输出
+
+过滤之后的句子。
+
+样例输入
+
+Hello world.This is c language.
+样例输出
+
+Hello world.This is c language.
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+int main (){
+	string s1;
+	while(cin >> s1)
+	{
+		cout << s1 << " ";
+	}
+ 
+} 
+24:单词的长度
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+输入一行单词序列，相邻单词之间由1个或多个空格间隔，请对应地计算各个单词的长度。
+
+注意，如果有标点符号（如连字符，逗号），标点符号算作与之相连的词的一部分。没有被空格间开的符号串，都算作单词。
+
+输入
+
+一行单词序列，最少1个单词，最多300个单词，单词之间用至少1个空格间隔。单词序列总长度不超过1000。
+
+输出
+
+依次输出对应单词的长度，之间以逗号间隔。
+
+样例输入
+
+She was born in 1990-01-02 and from Beijing city.
+样例输出
+
+3,3,4,2,10,3,4,7,5
+#include<iostream>
+#include<cstring>
+using namespace std;
+int main()
+{
+	string s;
+ 
+	int i = 0;
+	cin >> s;
+	cout << s.length();
+	while(cin >> s)
+	{
+		cout << "," << s.size();
+	}
+	return 0;
+}
+25:最长最短单词
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+输入1行句子（不多于200个单词，每个单词长度不超过100），只包含字母、空格和逗号。单词由至少一个连续的字母构成，空格和逗号都是单词间的间隔。
+
+试输出第1个最长的单词和第1个最短单词。
+
+输入
+
+一行句子。
+
+输出
+
+两行输出：
+第1行，第一个最长的单词。
+第2行，第一个最短的单词。
+
+样例输入
+
+I am studying Programming language C in Peking University
+样例输出
+
+Programming 
+I
+#include<iostream>
+#include<cstring>
+using namespace std;
+int main()
+{
+	string s, s1,s2;
+ 
+ 
+	int i = 0;
+	cin >> s;
+	int len = s.size();
+	if(s[s.length()-1] == ',') 
+	{
+		s1 = s;
+		s1[s.size()-1] = '\n';
+		s2 = s;
+		s2[s.size()-1] = '\n';
+	}
+	
+	else
+	{
+		s1 = s; 
+		s2 = s;
+	}
+ 
+	while(cin >> s)
+	{
+		
+		char c = getchar();
+		len = s.size();
+		if(s[s.size()-1] == ',')
+		{
+			len = s.size() - 1; 
+			if(s1.size() > len)
+			{
+				s1 = s;
+				s1[s.size()-1] = '\n';
+			}
+			if(s2.size() < len)
+			{
+				s2 = s;
+				s2[s.size()-1] = '\n';
+			}
+			
+		} 
+		else
+		{
+			if(s1.size() > len)
+			s1 = s;
+			if(s2.size() < len)
+			s2 = s;
+		} 
+		if(c == '\n') break;
+	}
+	cout << s2 << endl;
+	cout << s1 << endl;
+	return 0;
+}
+ 
+
+
+26:字符串最大跨距
+描述
+
+有三个字符串S,S1,S2，其中，S长度不超过300，S1和S2的长度不超过10。想检测S1和S2是否同时在S中出现，且S1位于S2的左边，并在S中互不交叉（即，S1的右边界点在S2的左边界点的左侧）。计算满足上述条件的最大跨距（即，最大间隔距离：最右边的S2的起始点与最左边的S1的终止点之间的字符数目）。如果没有满足条件的S1，S2存在，则输出-1。
+
+例如，S = "abcd123ab888efghij45ef67kl", S1="ab", S2="ef"，其中，S1在S中出现了2次，S2也在S中出现了2次，最大跨距为：18。
+
+输入
+
+三个串：S1, S2, S3，其间以逗号间隔（注意，S1, S2, S3中均不含逗号和空格）；
+
+输出
+
+S1和S2在S最大跨距；若在S中没有满足条件的S1和S2，则输出-1。
+
+样例输入
+
+abcd123ab888efghij45ef67kl,ab,ef
+样例输出
+
+18
+#include<iostream>
+#include<cstring>
+using namespace std;
+ 
+int index(string s, string t){
+	int slen = s.size();
+	int tlen = t.size();
+	int i , j;
+ 
+	for(i = 0; i < slen; i++){
+		int temp = i;
+		for(j = 0; j < tlen;){
+ 
+			if(s[i] == t[j]){
+				i++;
+				j++;
+			}
+			else{
+				i = temp;
+				break;
+			}
+		}
+		if(j == tlen){
+			return i;
+		}
+	}
+	return -1;
+}
+ 
+int index1(string s, string t){
+	int slen = s.size();
+	int tlen = t.size();
+	int i , j = tlen;
+ 
+	for(i = slen - 1; i >= 0; i--){
+		int temp = i;
+		for(j = tlen - 1; j >= 0;){
+			if(s[i] == t[j]){
+				i--;
+				j--;
+			}
+			else{
+				i = temp;
+				break;
+			}
+		}
+		if(j == -1){
+			return i;
+		}
+	}
+	return -1;
+}
+ 
+ 
+int main(){
+	string s, ss[3];
+	getline(cin, s);
+	
+	int len = s.length();
+	int j = 0;
+	for(int i = 0; i < 3; i++){
+		ss[i] = "";
+	}
+	for(int i = 0; i < len; i++){
+		if(s[i] == ','){
+			j++;
+			continue;
+		}
+		ss[j] += s[i];
+	}
+ 
+	int start = index (ss[0], ss[1]);
+	int end = index1 (ss[0], ss[2]);
+	
+	
+ 
+	if(start == -1 || end == -1)
+		cout << "-1" << endl;
+	
+	else if(start > end + 1){
+		cout << "-1" << endl;
+	}
+	else
+	cout << end - start + 1 << endl;
+	return 0;
+}
+27:单词翻转
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+输入一个句子（一行），将句子中的每一个单词翻转后输出。
+
+输入
+
+只有一行，为一个字符串，不超过500个字符。单词之间以空格隔开。
+
+输出
+
+翻转每一个单词后的字符串，单词之间的空格需与原文一致。
+
+样例输入
+
+hello world
+样例输出
+
+olleh dlrow
+#include<iostream>
+#include<string>
+using namespace std;
+ 
+int main(){
+	string s;
+	getline(cin, s);
+	int j = 0;
+	s[s.length()] = ' ';
+	for(int i = 0; i <= s.length(); i++){
+		if(s[i] == ' '){
+			int temp = i - 1;
+			while(temp >= j){
+				cout << s[temp--];
+			}
+			cout << s[i];
+			j = i + 1;
+		}
+	}
+	return 0;
+} 
+28:单词倒排
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+编写程序，读入一行英文(只包含字母和空格，单词间以单个空格分隔)，将所有单词的顺序倒排并输出，依然以单个空格分隔。
+
+输入
+
+输入为一个字符串（字符串长度至多为100）。
+
+输出
+
+输出为按要求排序后的字符串。
+
+样例输入
+
+I am a student
+样例输出
+
+student a am I
+#include<iostream>
+#include<string>
+using namespace std;
+ 
+int main(){
+	string s;
+	string ss[105];
+	getline(cin, s);
+	int slen = s.length();
+	int j = 0;
+	ss[0] = "";
+	for(int i = 0; i < slen; i++){
+		if(s[i] != ' '){
+			ss[j] += s[i];
+		}
+		else{
+			j++;
+			ss[j] = "";
+		}
+	}
+ 
+	for(int i = j; i >= 0; i--){
+			cout << ss[i] << " ";
+	}
+ 
+	return 0;
+} 
+29:ISBN号码
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+每一本正式出版的图书都有一个ISBN号码与之对应，ISBN码包括9位数字、1位识别码和3位分隔符，其规定格式如“x-xxx-xxxxx-x”，其中符号“-”是分隔符（键盘上的减号），最后一位是识别码，例如0-670-82162-4就是一个标准的ISBN码。ISBN码的首位数字表示书籍的出版语言，例如0代表英语；第一个分隔符“-”之后的三位数字代表出版社，例如670代表维京出版社；第二个分隔之后的五位数字代表该书在出版社的编号；最后一位为识别码。
+
+识别码的计算方法如下：
+
+首位数字乘以1加上次位数字乘以2……以此类推，用所得的结果mod 11，所得的余数即为识别码，如果余数为10，则识别码为大写字母X。例如ISBN号码0-670-82162-4中的识别码4是这样得到的：对067082162这9个数字，从左至右，分别乘以1，2，…，9，再求和，即0×1+6×2+„„+2×9=158，然后取158 mod 11的结果4作为识别码。
+
+你的任务是编写程序判断输入的ISBN号码中识别码是否正确，如果正确，则仅输出“Right”；如果错误，则输出你认为是正确的ISBN号码。
+
+输入
+
+只有一行，是一个字符序列，表示一本书的ISBN号码（保证输入符合ISBN号码的格式要求）。
+
+输出
+
+共一行，假如输入的ISBN号码的识别码正确，那么输出“Right”，否则，按照规定的格式，输出正确的ISBN号码（包括分隔符“-”）。
+
+样例输入
+
+样例 #1：
+0-670-82162-4
+样例 #2：
+0-670-82162-0
+样例输出
+
+样例 #1：
+ Right 
+样例 #2：
+ 0-670-82162-4
+#include<iostream>
+#include<cstring>
+using namespace std;
+ 
+int main(){
+	string s;
+	cin >> s;
+	string s1 = "";
+	long long m = 0;
+	for(int i = 0; i < s.length() - 1; i++){
+		if(s[i] <= '9' && s[i] >= '0'){
+			s1 += s[i];
+		}
+	}
+ 
+	int len = s1.length();
+	for(int i = 1; i <= len; i++){
+			m += (s1[i - 1] - '0') * i;	
+	}
+ 
+	if(m % 11 == 10 && s[s.length() - 1] == 'X'){
+		cout << "Right" << endl;
+	}
+	else if(m % 11 == s[s.length() - 1] - '0'){
+		cout << "Right" << endl;
+	}
+	else
+	{
+		if(m % 11 == 10){
+			s[s.length()-1] = 'X'; 
+			for(int i = 0; i < s.length(); i++)
+			cout << s[i]; 
+		}			
+		else{
+			s[s.length()-1] = m % 11 + '0'; 
+			for(int i = 0; i < s.length(); i++)
+			cout << s[i]; 
+		}
+		
+	}
+	return 0;
+}
+ 
+
+31:字符串p型编码
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+给定一个完全由数字字符（'0','1','2',…,'9'）构成的字符串str，请写出str的p型编码串。例如：字符串122344111可被描述为"1个1、2个2、1个3、2个4、3个1"，因此我们说122344111的p型编码串为1122132431；类似的道理，编码串101可以用来描述1111111111；00000000000可描述为"11个0"，因此它的p型编码串即为110；100200300可描述为"1个1、2个 0、1个2、2个0、1个3、2个0"，因此它的p型编码串为112012201320。
+
+输入
+
+输入仅一行，包含字符串str。每一行字符串最多包含1000个数字字符。
+
+输出
+
+输出该字符串对应的p型编码串。
+
+样例输入
+
+122344111
+样例输出
+
+1122132431
+#include<iostream>
+#include<string>
+using namespace std;
+ 
+int main(){
+	string s;
+	cin >> s;
+	int count = 1;
+	s[s.length()] = -1;
+	for(int i = 0; i < s.length(); i++){
+		if(s[i] != s[i + 1]){
+			cout << count << s[i] - '0' ;
+			count = 1;
+		}
+		else{
+			count ++ ;
+		}
+	}
+	return 0;
+} 
+32:行程长度编码
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+在数据压缩中，一个常用的途径是行程长度压缩。对于一个待压缩的字符串而言，我们可以依次记录每个字符及重复的次数。这种压缩，对于相邻数据重复较多的情况比较有效。 例如，如果待压缩串为"AAABBBBCBB"，则压缩的结果是(A,3)(B,4)(C,1)(B,2)。当然，如果相邻字符重复情况较少，则压缩效率就较低。
+
+现要求根据输入的字符串，得到大小写不敏感压缩后的结果（即所有小写字母均视为相应的大写字母）。
+
+输入
+
+一个字符串，长度大于0，且不超过1000，全部由大写或小写字母组成。
+
+输出
+
+输出为一行，表示压缩结果，形式为：
+(A,3)(B,4)(C,1)(B,2)
+即每对括号内部分别为字符（都为大写）及重复出现的次数，不含任何空格。
+
+样例输入
+
+aAABBbBCCCaaaaa
+样例输出
+
+(A,3)(B,4)(C,3)(A,5)
+#include<iostream>
+#include<string>
+using namespace std;
+ 
+int main(){
+	string s;
+	getline(cin, s);
+	s[s.length()] = ' ';
+	int count = 1;
+	
+	for(int i = 0; i < s.length(); i++){
+		if(s[i] >= 'a' && s[i] <= 'z') {
+			s[i] -= 32;
+		}
+	}
+	for(int i = 0; i < s.length(); i++){
+		if(s[i] != s[i+1]){
+				cout << "(" << s[i] << "," << count << ")" ;
+				count = 1;
+			}
+		
+		else
+		{
+			count ++ ;
+		}
+	}
+	return 0;
+} 
+33:判断字符串是否为回文
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+输入一个字符串，输出该字符串是否回文。回文是指顺读和倒读都一样的字符串。
+
+输入
+
+输入为一行字符串（字符串中没有空白字符，字符串长度不超过100）。
+
+输出
+
+如果字符串是回文，输出yes；否则，输出no。
+
+样例输入
+
+abcdedcba
+样例输出
+
+yes
+#include<iostream>
+#include<cstring>
+using namespace std;
+int main ()
+{
+	char  a[102],b[102];
+	cin >> a;
+	int len = strlen(a);
+	for( int i = 0; i < len ; i++ )
+	{
+		b[len - i - 1] = a[i];
+	}
+	int flag = 0;
+	for(int i = 0 ; i < len ; i++)
+	{
+		if(a[i] != b[i])
+		{
+			flag = 1;
+			break;
+		}
+		
+	}
+	if(!flag)
+	cout << "yes";
+	else
+	cout << "no";
+}
+ 
+
+
+30:字符环
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+有两个由字符构成的环。请写一个程序，计算这两个字符环上最长连续公共字符串的长度。例如，字符串“ABCEFAGADEGKABUVKLM”的首尾连在一起，构成一个环；字符串“MADJKLUVKL”的首尾连在一起，构成一个另一个环；“UVKLMA”是这两个环的一个连续公共字符串。
+
+输入
+
+一行，包含两个字符串，分别对应一个字符环。这两个字符串之间用单个空格分开。字符串长度不超过255，且不包含空格等空白符。
+
+输出
+
+输出一个整数，表示这两个字符环上最长公共字符串的长度。
+
+样例输入
+
+ABCEFAGADEGKABUVKLM MADJKLUVKL
+样例输出
+
+6
+看到这道题字符串首位相接，我第一个想到的就是把字符串 * 2，然后进行暴力遍历，但是只有6分。
+
+ac
+acac
+ 
+acac
+ac
+对于上面的样例，实际结果应该是 2 ，但是我写出了4，因为当我短的字符串匹配长串时，把原串都 * 2，结果就出来了 4，那我们怎么避免这种情况呢？
+
+解题思路
+
+第一步，先把字符串成环，
+
+第二步，进行匹配找到最大公共子序列
+
+最大公共子序列的长度是不超过最短的那个字符串的。
+
+#include <iostream>
+#include <cstring>
+#include <algorithm>
+using namespace std;
+int main()
+{
+    int x, y, len, len1, len2, limit, ans=0;
+    string s1, s2;
+    cin >> s1 >> s2;
+    len1 = s1.size();    
+    len2 = s2.size();
+    limit = min(len1, len2);    //最短字符串的长度
+    s1 += s1; // 造环
+    s2 += s2; // 造环
+    for (int i=0; i<len1; i++){
+        for (int j=0; j<len2; j++){
+            len = 0;
+            x = i;
+            y = j;
+            while (s1[x++]==s2[y++] && len<limit)     //不能超过段长
+                len++;  
+            if (len > ans)
+                ans = len;
+        }
+    }
+    cout << ans << endl;
+    return 0;
+}
+ 
+
+
+
+
+34:回文子串
+总时间限制:
+
+1000ms
+
+内存限制:
+
+65536kB
+
+描述
+
+给定一个字符串，输出所有长度至少为2的回文子串。
+
+回文子串即从左往右输出和从右往左输出结果是一样的字符串，比如：abba，cccdeedccc都是回文字符串。
+
+输入
+
+一个字符串，由字母或数字组成。长度500以内。
+
+输出
+
+输出所有的回文子串，每个子串一行。
+子串长度小的优先输出，若长度相等，则出现位置靠左的优先输出。
+
+样例输入
+
+123321125775165561
+样例输出
+
+33
+11 
+77
+55 
+2332
+2112 
+5775 
+6556 
+123321 
+165561
+ 
+
+我们分析问题，第一步我们需要找回文字符串，第二步怎么从小到大的长度输出？
+
+第一步 ：长度至少为二，那我们就可以枚举长度从二到 整个字符串的长度
+
+第二步：我们从左向右遍历整个字符串，然后截取出长度为n 的字符串长度，进行判断，若为回文串则输出，否则继续找。
+
+#include<iostream>
+#include<cstring>
+#include<math.h>
+using namespace std;
+//第一种判断是否为回文串的方法
+bool check(string s){
+	int len = s.length();
+	string ss = "";
+	for(int i = len - 1; i >= 0; i--){
+		ss += s[i];
+	}
+	if(ss == s)
+		return 1;
+	else 
+		return 0;
+}
+//第二种
+/*
+bool check(string s){
+	int len = s.length();
+	for(int i = 0; i < len/ 2; i++){
+		if(s[i] != s[len - i - 1]) return 0;
+	}
+	return 1;
+}
+*/
+ 
+int main(){
+	string s;
+	cin >> s;
+	string ss;
+	ss = "";
+	int len = s.length();
+	for(int i = 2; i <= len; i++){
+		for(int j = 0; j < len; j++){
+			for(int k = 0; k < i; k++){
+				ss += s[j + k];  
+			}
+			if( check(ss) )
+				cout << ss << endl; 
+			ss = "";
+		}
+	}
+	return 0;
+} 
+ 
+
+
+
+
+35:字符串的展开
+
+#include<cstdio>
+char a[300],d,e,f,j,p;
+int main()
+{
+    int p1,p2,p3,i=0,k;
+    scanf("%d%d%d%s",&p1,&p2,&p3,a);
+   for(;a[i];i++)
+    {
+            d=a[i-1],e=a[i+1],f=a[i];
+        if(f=='-'&&e>d&&(d>='0'&&e<='9'||d>='a'&&e<='z'))//左边的字母序小于右边的字母序 
+     {
+                   for(p3==1?j=d+1:j=e-1;p3==1?j<e:j>d;p3==1?j++:j--)//用三目运算符是实现的控制-- 可以分解为两种for循环 即p3=1时顺序不变等于2时倒序 
+          {
+                                p=j;//把j字符赋值给p 
+                  if(p1==2)
+                       p=(p>='a')?p-32:p;
+                   else if(p1==3) p='*';
+              for(k=0;k<p2;k++)//控制输出的个数 
+            printf("%c",p);
+          }
+       }
+        else
+            printf("%c",f);//否则直接输出原来的字母序 
+
+    } 
+    return 0;
+}
+

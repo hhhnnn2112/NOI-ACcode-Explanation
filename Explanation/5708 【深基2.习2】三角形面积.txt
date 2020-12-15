@@ -1,0 +1,11 @@
+#include<bits/stdc++.h>
+using namespace std;
+double a,b,c,p;
+int main()
+{
+	cin>>a>>b>>c;
+	p=(a+b+c)*0.5;
+	double ans=sqrt(p*(p-a)*(p-b)*(p-c));
+	printf("%.1lf",ans);
+	return 0;
+}

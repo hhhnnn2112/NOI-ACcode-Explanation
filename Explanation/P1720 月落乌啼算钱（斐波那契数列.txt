@@ -1,0 +1,16 @@
+#include<bits/stdc++.h>
+using namespace std;
+double n,ans,i=1,j=1,tem;
+int main()
+{
+	cin>>n;
+	for(int q=3;q<=n;q++)
+	{
+		tem=j;
+		j+=i;
+		i=tem;
+		if(q==n)ans=j;
+	}
+	cout<<fixed<<setprecision(2)<<ans;
+	return 0;
+}

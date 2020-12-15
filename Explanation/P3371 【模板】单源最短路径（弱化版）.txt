@@ -1,0 +1,58 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int N=1e4+10,M=5e5+10;
+int head[N],ver[M],edge[M],nxt[M],cnt;
+void add(int x,int y,int z)
+{
+	cnt++;
+	ver[cnt]=y;
+	nxt[cnt]=head[x];
+	head[x]=cnt;
+	edge[cnt]=z;
+}
+priority_queue<pair<int,int> >q;
+int d[N],v[N];
+void dij(int s)
+{
+	for(int i=1;i<=10005;i++)
+	{
+		d[i]=2147483647;
+	}
+	memset(v,0,sizeof v);
+	d[s]=0;
+	q.push(make_pair(0,s));
+	while(!q.empty())
+	{
+		int x=q.top().second;
+		q.pop();
+		if(v[x])continue;
+		v[x]=1;
+		for(int i=head[x];i;i=nxt[i])
+		{
+			int y=ver[i];
+			int z=edge[i];
+			if(d[y]>d[x]+z)
+			{
+				d[y]=d[x]+z;
+				q.push(make_pair(-d[y],y));
+			}
+		}
+	}
+}
+int n,m,s;
+int main()
+{
+	scanf("%d%d%d",&n,&m,&s);
+	for(int i=1;i<=m;i++)
+	{
+		int x,y,z;
+		scanf("%d%d%d",&x,&y,&z);
+		add(x,y,z);
+	}
+	dij(s);
+	for(int i=1;i<=n;i++)
+	{
+		printf("%d ",d[i]);
+	}
+	return 0;
+}

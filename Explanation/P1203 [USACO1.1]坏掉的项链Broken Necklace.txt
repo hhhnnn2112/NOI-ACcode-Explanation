@@ -1,0 +1,51 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n;
+char a[1000];
+int main()
+{
+	cin>>n;
+	cin>>a;
+	for(int i=n;i<2*n;i++)
+	{
+		a[i]=a[i-n];
+	}
+	int maxn=0;
+	for(int i=0;i<2*n;i++)
+	{
+		int l=i,r=i+1;
+		char la=a[l];
+		char ra=a[r];
+		if(a[l]=='w')
+		{
+			la=a[l-1];
+		}
+		if(a[r]=='w')
+		{
+			ra=a[r-1];
+		}
+		int ans=0;
+		while(l>=0)
+		{
+			if(a[l]==la||a[l]=='w')
+			{
+				ans++;
+			}
+			else break;
+			l--;
+		}
+		while(r<2*n)
+		{
+			if(a[r]==ra||a[r]=='w')
+			{
+				ans++;
+			}
+			else break;
+			r++;
+		}
+		maxn=max(ans,maxn);
+	}
+	if(maxn>n)maxn=n;
+	cout<<maxn;
+	return 0;
+}

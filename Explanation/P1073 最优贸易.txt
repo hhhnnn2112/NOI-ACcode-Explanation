@@ -1,0 +1,86 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int N=1000500;
+int heada[N],nxta[N],vera[N];
+int headb[N],nxtb[N],verb[N];
+int cnta,cntb;
+void adda(int x,int y)
+{
+	vera[++cnta]=y;
+	nxta[cnta]=heada[x];
+	heada[x]=cnta;
+}
+void addb(int x,int y)
+{
+	verb[++cntb]=y;
+	nxtb[cntb]=headb[x];
+	headb[x]=cntb;
+}
+int n,m,edge[N];
+int da[N],db[N];
+int minn=-1e9;
+bool va[N],vb[N];
+void dij1()
+{
+	priority_queue<pair<int ,int> >q1;
+	memset(da,0x3f,sizeof da);
+	da[1]=edge[1];
+	q1.push(make_pair(0,1));
+	while(q1.size())
+	{
+		int x=q1.top().second;
+		q1.pop();
+		if(va[x])continue;
+		va[x]=1;
+		for(int i=heada[x];i;i=nxta[i])
+		{
+			int y=vera[i];
+			da[y]=min(edge[y],da[x]);
+			q1.push(make_pair(-da[y],y));
+		}
+	}
+}
+void dij2()
+{
+	priority_queue<pair<int ,int> >q2;
+	memset(db,0,sizeof db);
+	db[n]=edge[n];
+	q2.push(make_pair(0,n));
+	while(q2.size())
+	{
+		int x=q2.top().second;
+		q2.pop();
+		if(vb[x])continue;
+		vb[x]=1;
+		for(int i=headb[x];i;i=nxtb[i])
+		{
+			int y=verb[i];
+			db[y]=max(edge[y],db[x]);
+			q2.push(make_pair(-db[y],y));
+		}
+	}
+}
+int main()
+{
+	cin>>n>>m;
+	for(int i=1;i<=n;i++)
+	{
+		cin>>edge[i];
+	}
+	for(int i=1;i<=m;i++)
+	{
+		int x,y,z;
+		cin>>x>>y>>z;
+		adda(x,y);
+		addb(y,x);
+		if(z==2)adda(y,x),addb(x,y);
+	}
+	dij1();
+	dij2();
+	for(int i=1;i<=n;i++)
+	{
+		minn=max(minn,db[i]-da[i]);
+	}
+	cout<<minn;
+	return 0;
+}

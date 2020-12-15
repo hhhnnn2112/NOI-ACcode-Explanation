@@ -1,0 +1,12 @@
+#include<bits/stdc++.h>
+using namespace std;
+int f[200];
+int ans;
+char tem;
+int main()
+{
+	for(; cin >> tem ; ){
+		ans ++;
+	}
+	cout << ans << endl;
+}

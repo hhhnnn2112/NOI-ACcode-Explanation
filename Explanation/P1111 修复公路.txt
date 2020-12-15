@@ -1,0 +1,53 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,m,ll;
+int tmax;
+int f[100001];
+struct ye
+{
+	int x;
+	int y;
+	int t;
+}a[100001];
+bool cmp(ye a,ye b)
+{
+	return a.t<b.t;
+}
+int find(int k)
+{
+	if(f[k]==k)
+	{
+		return k;
+	}
+	return f[k]=find(f[k]);
+}
+int main()
+{
+	cin>>n>>m;
+	for(int i=1;i<=n;i++)
+	{
+		f[i]=i;
+	}
+	for(int i=1;i<=m;i++)
+	{
+		cin>>a[i].x>>a[i].y>>a[i].t;
+	}
+	sort(a+1,a+1+m,cmp);
+	for(int i=1;i<=m;i++)
+	{
+		int fx=find(f[a[i].x]);
+		int fy=find(f[a[i].y]);
+		if(fx!=fy)
+		{
+			f[fx]=fy;
+			n--;
+		}
+		if(n==1)
+		{
+			cout<<a[i].t;
+			return 0;
+		}
+	}
+	cout<<"-1";
+	return 0;
+}

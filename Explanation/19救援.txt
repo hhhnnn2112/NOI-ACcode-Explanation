@@ -1,0 +1,17 @@
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+    int n,people;
+    double x,y,d,time=0;
+    cin>>n;
+    for(int i=0;i<n;i++)
+    {
+        cin>>x>>y>>people;
+        d=sqrt(x*x+y*y)*2; 
+        time+=1.5*people+d/50;
+    }
+    cout<<ceil(time)<<endl;        //ceil向上取整，取大于或等于它本身的整数，需包含<cmath>
+    return 0;

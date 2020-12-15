@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool isprime(int x)//判断是否是质数
+{
+    if(x<2)return false;//小于2的数都不是
+    double k=sqrt(x);//提前开根，否则反复开根浪费时间
+    for(int i=2;i<=k;i++)
+    if(x%i==0)return false;
+    return true;
+    //判断2到根号下x无约数
+}
+bool likeprime(int x)
+{//判断类似质数的数
+    if(x%2==0)return false;
+    if(x%3==0)return false;
+    if(x%5==0)return false;
+    //题目中说，除以2、3、5都得有余数，换句话说就是不能被2、3、5整除，所以x如果被2、3、5整除，直接拜拜
+    return true;
+    //不是假就是真
+}
+int main()
+{
+    int x;cin>>x;//输入
+    if(isprime(x) || likeprime(x))cout<<"Prime"<<endl;
+    else cout<<"Not Prime"<<endl;
+    //判断（x是质数或类似质数）的真假
+    return 0;
+}

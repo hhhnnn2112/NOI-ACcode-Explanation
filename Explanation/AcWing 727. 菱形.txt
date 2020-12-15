@@ -1,0 +1,30 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    int sx = n / 2, sy = n / 2;
+
+    for (int i = 0; i < n ; i ++ )
+    {
+        for (int j = 0; j < n; j ++ )
+        {
+            if ( abs(sx - i) + abs(sy - j) <= n / 2 ) cout << "*";
+            else cout << " ";
+        }
+        cout << endl;    
+    }
+
+    return 0;
+}
+
+
+作者：小张同学
+链接：https://www.acwing.com/solution/content/8774/
+来源：AcWing
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

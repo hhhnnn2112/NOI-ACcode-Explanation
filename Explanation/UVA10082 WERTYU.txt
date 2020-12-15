@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+
+char s[] = "`1234567890-=QWERTYUIOP[]\\ASDFGHJKL;'ZXCVBNM,./";//预处理出每一个字符
+char c;
+
+int main() {
+	while (c != EOF) {
+		int flag = 0;
+		c = getchar();
+		for (int i = 0; s[i]; i++) {
+			if (s[i] == c) {//找到这个位置
+				putchar(s[i - 1]);//输出前一个
+				flag = 1;
+				break;
+			}
+		}
+		if (flag == 0)
+			putchar(c);//当这个字符不在那个数组中时就输出原字符
+	}
+	return 0;
+}

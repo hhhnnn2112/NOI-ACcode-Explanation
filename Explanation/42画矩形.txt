@@ -1,0 +1,23 @@
+
+#include <iostream>
+using namespace std;
+int main()
+{
+    int h,w,i,j;
+    char n;
+    bool x;
+    cin>>h>>w>>n>>x;
+    for(i=1;i<=h;i++)
+    {	
+    	if(x==1)
+    		for(j=1;j<=w;j++)
+				cout<<n;	
+    	if(x==0)
+    		for(j=1;j<=w;j++)
+    			if(i!=1&&i!=h&&j!=1&&j!=w)
+    				cout<<" ";
+    			else
+    				cout<<n;
+		cout<<endl;
+	}
+	return 0;

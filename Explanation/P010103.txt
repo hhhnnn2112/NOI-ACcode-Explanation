@@ -1,0 +1,343 @@
+01：整形数据类型存储空间大小
+总时间限制: 1000ms        内存限制: 65536kB
+
+描述
+
+分别定义int，short类型的变量各一个，并依次输出它们的存储空间大小（单位：字节）。
+
+输入
+
+无。
+
+输出
+
+一行，两个整数，分别是两个变量的存储空间大小，用一个空格隔开。
+
+样例输入
+
+（无）
+样例输出
+
+（不提供）
+提示
+
+使用sizeof函数可以得到一个特定变量的存储空间大小。例如：对于int型变量x，sizeof(x)的值为4，即x的存储空间为4字节。
+
+#include <iostream>
+using namespace std;
+int main()
+{
+	int a;
+	short b;
+	cout<<sizeof(a)<<" "<<sizeof(b);        //sizeof()计算存储空间
+	return 0;
+}
+ 
+02：浮点型数据类型存储空间大小
+总时间限制: 1000ms        内存限制: 65536kB
+
+描述
+
+分别定义float，double类型的变量各一个，并依次输出它们的存储空间大小（单位：字节）。
+
+输入
+
+无。
+
+输出
+
+一行，两个整数，分别是两个变量的存储空间大小，用一个空格隔开。
+
+样例输入
+
+（无）
+样例输出
+
+（不提供）
+#include <iostream>
+using namespace std;
+int main()
+{
+	float a;
+	double b;
+	cout<<sizeof(a)<<" "<<sizeof(b);
+	return 0;
+}
+ 
+03：其他基本数据类型存储空间大小
+总时间限制: 1000ms        内存限制: 65536kB
+
+描述
+
+分别定义bool，char类型的变量各一个，并依次输出它们的存储空间大小（单位：字节）。
+
+输入
+
+无。
+
+输出
+
+一行，两个整数，分别是两个变量的存储空间大小，用一个空格隔开。
+
+样例输入
+
+（无）
+样例输出
+
+（不提供）
+#include <iostream>
+using namespace std;
+int main()
+{
+	bool a;
+	char b;
+	cout<<sizeof(a)<<" "<<sizeof(b);
+	return 0;
+}
+ 
+04：填空：类型转换1
+总时间限制: 1000ms        内存限制: 65536kB
+
+描述
+
+有两个变量a和b，在执行了如下代码后：
+
+a = 32768;
+b = a;
+printf("%d %d\n", a, b);
+输出两个数：32768 -32768
+
+请问a和b分别是以下哪种类型？
+
+A. bool   B. char   C. short   D. int   E. float   F. double
+
+输入
+
+无。
+
+输出
+
+一行，包含两个大写字母，分别代表变量a和b的类型标号。中间用一个空格隔开。
+
+样例输入
+
+无
+样例输出
+
+A B
+// 仅作格式示例，非正确答案
+#include<iostream>
+using namespace std;
+int main()
+{
+    cout<<"D"<<" "<<"C"<<endl;
+    return 0;
+}
+ 
+05：填空：类型转换2
+总时间限制: 1000ms        内存限制: 65536kB
+
+描述
+
+有两个变量a和b，在执行了如下代码后：
+
+a = 1.000000001;
+b = a;
+printf("%.9f %.9f\n", a, b);
+输出两个数：1.000000001 1.000000000
+
+请问a和b分别是以下哪种类型？
+
+A. bool   B. char   C. short   D. int   E. float   F. double
+
+输入
+
+无。
+
+输出
+
+一行，包含两个大写字母，分别代表变量a和b的类型标号。中间用一个空格隔开。
+
+样例输入
+
+无
+样例输出
+
+A B
+// 仅作格式示例，非正确答案
+#include<iostream>
+using namespace std;
+int main()
+{
+	cout<<"F"<<" "<<"E"<<endl;
+	return 0;
+}
+ 
+06：浮点数向零舍入
+总时间限制: 1000ms        内存限制: 65536kB
+
+描述
+
+输入一个单精度浮点数，将其向零舍入到整数。
+
+说明：向零舍入的含义是，正数向下舍入，负数向上舍入。
+
+提示：可以使用强制类型转换来实现。
+
+输入
+
+一个单精度浮点数。
+
+输出
+
+一个整数，即向零舍入到整数的结果。
+
+样例输入
+
+2.3
+样例输出
+
+2
+#include<iostream>
+using namespace std;
+int main()
+{
+	float a;
+	cin>>a;
+	cout<<int(a);        //采用强制转换
+	return 0;
+}
+ 
+ 
+//强制转换是把一开始的数据类型强制转换成另一种数据类型，并在后面扩出被强制转换的对象
+ 
+07：打印ASCII码
+总时间限制: 1000ms        内存限制: 65536kB
+
+描述
+
+输入一个除空格以外的可见字符（保证在函数scanf中可使用格式说明符%c读入），输出其ASCII码。
+
+输入
+
+一个除空格以外的可见字符。
+
+输出
+
+一个十进制整数，即该字符的ASCII码。
+
+样例输入
+
+A
+样例输出
+
+65
+#include<iostream>
+using namespace std;
+int main()
+{
+	char a;
+	cin>>a;
+	cout<<int(a);
+	return 0;
+}
+ 
+08：打印字符
+总时间限制: 1000ms        内存限制: 65536kB
+
+描述
+
+输入一个ASCII码，输出对应的字符。
+
+输入
+
+一个整数，即字符的ASCII码，保证存在对应的可见字符。
+
+输出
+
+一行，包含相应的字符。
+
+样例输入
+
+65
+样例输出
+
+A
+#include<iostream>
+using namespace std;
+int main()
+{
+	int a;
+	cin>>a;
+	cout<<char(a);
+	return 0;
+}
+ 
+09：整型与布尔型的转换
+总时间限制: 1000ms        内存限制: 65536kB
+
+描述
+
+将一个整型变量的值赋给一个布尔型变量，再将这个布尔型变量的值赋给一个整型变量，得到的值是多少？
+
+输入
+
+一个整型范围内的整数，即初始时整型变量的值。
+
+输出
+
+一个整数，经过上述过程后得到的结果。
+
+样例输入
+
+3
+样例输出
+
+1
+#include<iostream>
+using namespace std;
+int main()
+{
+	int a,c;
+	bool b;
+	cin>>a;
+	b=a;
+	c=b;
+	cout<<c;
+	return 0;
+}
+ 
+10：Hello, World!的大小
+总时间限制: 1000ms        内存限制: 65536kB
+
+描述
+
+还记得在上一章里，我们曾经输出过的“Hello, World!”吗？
+
+它虽然不是本章所涉及的基本数据类型的数据，但我们同样可以用sizeof函数获得它所占用的空间大小。
+
+请编程求出它的大小，看看跟你设想的是否一样？
+
+输入
+
+无。
+
+输出
+
+一个整数，即“Hello, World!”的大小。
+
+样例输入
+
+（无）
+样例输出
+
+（不提供）
+#include<iostream>
+using namespace std;
+int main()
+{
+    cout<<sizeof("Hello, World!");
+    return 0;
+}
+ 
+以上即为NOI 1.2部分的所有题目，欢迎指正！

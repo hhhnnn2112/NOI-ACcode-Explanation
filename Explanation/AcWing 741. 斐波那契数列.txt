@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+long long febo(int n)
+{
+    long long  a = 0;
+    long long b = 1;
+    long long c;
+    if(n == 0) c = a;
+    if(n == 1) c = b;
+
+    while (n >= 2)
+    {
+        c = a + b;//从第三个数开始，斐波那契数等于前两个数的和；
+        a = b;//将前一个数给到a，开始下一次求值
+        b = c;//将斐波那契数给b，开始下一次求值
+        n--;//每求一次，n都要减一
+    }
+    return c;
+}
+
+int main()
+{
+    int t, num = 0;
+    long long res = 0;
+    cin>> t;
+    while(t--){
+        cin>> num;
+        res = febo(num);
+        printf("Fib(%d) = %lld\n", num, res);
+    }
+    return 0;
+}
+
+作者：zhiling
+链接：https://www.acwing.com/solution/content/1892/
+来源：AcWing
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

@@ -1,0 +1,28 @@
+#include<cstdio>
+#include<iostream>
+using namespace std;
+int main()
+{
+	char a[1000];//准备字符串 
+	int n;
+	cin>>n;//读入个数 
+	for(int i=1;i<=n;i++)
+	{
+		cin>>a;//读入字符串 
+		int co=0,s=0;
+		for(int j=0;a[j]!='\0';j++)//遍历 
+		{
+			if(a[j]=='O')//如果a[j]是O
+			{
+				co++;//累积分数
+				s+=co;
+			}
+			else//是X
+			{
+				co=0;//分数清零
+			}
+		}
+		cout<<s<<endl;
+	}
+	return 0;//完美结束
+}

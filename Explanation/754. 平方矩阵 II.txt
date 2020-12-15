@@ -1,0 +1,52 @@
+输入整数N，输出一个N阶的二维数组。
+
+数组的形式参照样例。
+
+输入格式
+输入包含多行，每行包含一个整数N。
+
+当输入行为N=0时，表示输入结束，且该行无需作任何处理。
+
+输出格式
+对于每个输入整数N，输出一个满足要求的N阶二维数组。
+
+每个数组占N行，每行包含N个用空格隔开的整数。
+
+每个数组输出完毕后，输出一个空行
+
+
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int a[100][100];
+int n;
+
+int main()
+{
+    while (cin >> n)
+    {
+        for (int i = 0; i < n; i ++ )
+            for(int j = 0; j < n; j ++ )
+                a[i][j] = abs(i - j) + 1;  // 规律
+
+        for (int i = 0; i < n; i ++ )
+        {
+            for (int j = 0; j < n; j ++ )
+                cout << a[i][j] << ' ';
+
+            cout << endl;
+        }
+
+        if (n)
+        cout << endl;
+    }
+
+    return 0;
+} 
+
+作者：ltk
+链接：https://www.acwing.com/solution/content/6638/
+来源：AcWing
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

@@ -1,0 +1,27 @@
+求 n!(n\le12)n!(n≤12)，也就是 1×2×3...×n1×2×3...×n。
+
+#include<cstdio>
+#include<algorithm>
+#include<iostream>
+#define FOR(I, A, N) for(int I = A; I <= N; I++)//秀一下我的C++技术（说明我很水
+#define For(I, A, N) for(int I = A; I >= N; I--)//在秀一波
+#define LL long long//三年OI一场梦 不开long long见祖宗，（不知我背的对不对？）
+using namespace std;
+long long ans = 1;
+int n;
+void jie_cheng(int x)//递归
+{
+	ans *= x;
+	if(x == n)
+	{
+		return;
+	}
+	jie_cheng(x + 1);
+}
+int main()
+{
+	scanf("%d", &n);
+	jie_cheng(1);//从1开始，一直到n
+	printf("%lld\n", ans);输出不多说
+	return 0;
+}

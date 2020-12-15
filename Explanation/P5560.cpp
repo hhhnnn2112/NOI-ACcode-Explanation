@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+int T;
+long long n;
+int main()
+{
+	scanf("%d",&T);
+	while(T--)
+	{
+		scanf("%lld",&n);
+		if(n==4||n==10)
+		{
+			printf("%lld\n",n+1);
+		}
+		else
+		{
+			printf("%lld\n",n-1);
+		}
+	}
+	return 0;
+}

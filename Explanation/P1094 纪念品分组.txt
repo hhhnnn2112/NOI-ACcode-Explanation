@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+int a[30001],tem,w,g,ans;
+int main()
+{
+	cin>>w>>g;
+	for(int i=1;i<=g;i++)
+	{
+		cin>>a[i];
+	}
+	sort(a+1,a+1+g);
+	int j=1;
+	for(int i=g;i>=j;i--)
+	{
+		if(i==j)
+		{
+			ans++;
+			break;
+		}
+		if(a[i]+a[j]<=w)
+		{
+			j++;
+			ans++;
+		}
+		else
+		{
+			ans++;
+		}
+	}
+	cout<<ans;
+	return 0;
+}

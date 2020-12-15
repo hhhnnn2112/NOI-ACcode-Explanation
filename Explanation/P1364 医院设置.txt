@@ -1,0 +1,58 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int N=1005;
+int head[N],nxt[N],ver[N];
+int cnt;
+int ans=1e9;
+void add(int x,int y)
+{
+	ver[++cnt]=y;
+	nxt[cnt]=head[x];
+	head[x]=cnt;
+}
+int n;
+int a[N];
+int f[N],size[N];
+void dfs(int x,int fa,int de)
+{
+	size[x]=a[x];
+	//cout<<"dwab"<<endl;
+	for(int i=head[x];i;i=nxt[i])
+	{
+		int y=ver[i];
+		if(y!=fa)
+		{
+			dfs(y,x,de+1);
+			size[x]+=size[y];
+		}
+	}
+	f[1]+=a[x]*de;
+}
+void dp(int x,int fa)
+{
+	for(int i=head[x];i;i=nxt[i])
+	{
+		int y=ver[i];
+		if(fa!=y)
+		{
+			f[y]=f[x]+size[1]-size[y]*2;
+			dp(y,x);
+		}
+	}
+	ans=min(ans,f[x]);
+}
+int main()
+{
+	cin>>n;
+	for(int i=1;i<=n;i++)
+	{
+		int x,y;
+		cin>>a[i]>>x>>y;
+		if(x)add(x,i),add(i,x);
+		if(y)add(y,i),add(i,y);
+	}
+	dfs(1,0,0);
+	dp(1,0);
+	cout<<ans;
+	return 0;
+}

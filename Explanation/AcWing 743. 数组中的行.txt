@@ -1,0 +1,27 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int l;
+    char op;
+    cin >> l >> op;
+    double s=0;
+    for(int i=0;i<12;i++)
+    {
+        for(int j=0;j<12;j++)
+        {
+            double a;
+            cin >> a;
+            if(i==l) s+=a;
+        }
+    }
+
+    printf("%.1lf",op=='S' ? s : s/12);
+}
+
+作者：繁花似锦
+链接：https://www.acwing.com/solution/content/12452/
+来源：AcWing
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

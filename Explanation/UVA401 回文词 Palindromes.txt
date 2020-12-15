@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+char rev[]="A   3  HIL JM O   2TUVWXY51SE Z  8 ";
+char s[100];
+int hw,jx;
+char getrev(char c){
+    if(c>='A'&&c<='Z')
+        return rev[c-'A'];
+    else
+        return rev[c-'0'+25];
+}
+int main(){
+    while(cin>>s){
+        int len=strlen(s);
+        cout<<s;
+        hw=0,jx=0;
+        for(int i=0;i<(len+1)/2;i++){
+            if(s[i]!=s[len-i-1])
+                hw=1;
+            if(getrev(s[i])!=s[len-i-1])
+                jx=1;
+        }			
+        if(!hw&&!jx)
+            cout<<" -- is a mirrored palindrome."<<endl<<endl;
+        else if(!hw&&jx)
+            cout<<" -- is a regular palindrome."<<endl<<endl;
+        else if(hw&&!jx)
+            cout<<" -- is a mirrored string."<<endl<<endl;
+        else
+            cout<<" -- is not a palindrome."<<endl<<endl;
+    }
+    return 0;
+}

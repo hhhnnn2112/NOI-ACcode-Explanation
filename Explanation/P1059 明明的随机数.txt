@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+set< int >a;
+int n;
+int main()
+{
+	scanf("%d",&n);
+	for(int i=1;i<=n;i++)
+	{
+		int tmp;
+		scanf("%d",&tmp);
+		a.insert(tmp);
+	}
+	printf("%d\n",a.size());
+	for(;!a.empty();)
+	{
+		printf("%d ",*a.begin());
+		a.erase(a.begin());
+	}
+	return 0;
+}

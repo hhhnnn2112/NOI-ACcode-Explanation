@@ -1,0 +1,16 @@
+
+#include <iostream>
+using namespace std;
+int main()
+{
+	int m,n,i,sum=0;
+	cin>>m>>n;
+	for(i=m;i<=n;i++)
+	{
+		if(i%2==1)
+		{
+			sum+=i;                //如果为奇数，则相加
+		}
+	}
+	cout<<sum;
+	return 0;

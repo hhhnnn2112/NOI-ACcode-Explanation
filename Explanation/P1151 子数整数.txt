@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,z[6],b,m;
+int main()
+{
+	cin>>n;
+	for(int i=10000;i<=30000;i++)
+	{
+		b=i;
+		for(int j=5;j>=1;j--)
+		{
+			z[j]=b%10;
+			b/=10;
+		}
+		if(((z[1]*100+z[2]*10+z[3])%n)==0&&((z[2]*100+z[3]*10+z[4])%n)==0&&((z[3]*100+z[4]*10+z[5])%n)==0)
+			{
+				cout<<i<<endl;
+				m++;
+			}
+	}
+	if(m==0)
+	{
+		cout<<"No";
+	}
+	return 0;
+}

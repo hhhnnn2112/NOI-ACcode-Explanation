@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+using namespace std;
+int T,t;
+long long p,x,ans;
+int main(){
+	scanf("%d",&T);
+	while(T--)
+	{
+		scanf("%lld",&x);
+		ans=0;
+		for (p=1;x;x/=10,p*=9)
+		{
+			t=x%10;
+			if (t>=7) t--;
+			ans+=p*t;
+		}
+		printf("%lld\n",ans);
+	}
+}

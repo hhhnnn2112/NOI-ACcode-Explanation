@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+set<int>s;
+int n;
+int ans;
+bool v[100000];
+int main()
+{
+	scanf("%d",&n);
+	for(int i=1;i<=n;i++)
+	{
+		int tmp;
+		scanf("%d",&tmp);
+		s.insert(tmp);
+	}
+	for(set<int >::iterator i=s.begin();i!=s.end();i++)
+	{
+		for(set<int >::iterator j=i;j!=s.end();j++)
+		{
+			if(i==j)continue;
+			if(s.find(*j+*i)!=s.end()&&!v[*i+*j])
+			{
+				ans++;
+				v[*i+*j]=true;
+			}
+		}
+	}
+	printf("%d",ans);
+	return 0;
+}

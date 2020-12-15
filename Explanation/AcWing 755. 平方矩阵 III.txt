@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n;
+    while(cin >> n,n)
+    {
+        for(int i = 0; i < n; i ++)
+        {
+            for(int j = 0; j < n; j ++)
+                cout << (1 << i) * (1 << j) << ' ';//两个乘数 后者控制基数 1 ~ 2^(n-1) ，前者控制倍数
+            cout << endl;
+        }
+        cout << endl;
+    }
+    return 0;
+}
+
+作者：XDDX
+链接：https://www.acwing.com/solution/content/7673/
+来源：AcWing
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

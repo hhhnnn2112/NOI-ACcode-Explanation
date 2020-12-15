@@ -1,0 +1,62 @@
+#include<bits/stdc++.h>
+using namespace std;
+int a[105];
+int f1[105][105][15],f2[105][105][15];
+int sum[105];
+int n,m;
+int mo(int x)
+{
+	return ((x%10)+10)%10;
+}
+int main()
+{
+	cin>>n>>m;
+	for(int i=1;i<=n;i++)
+	{
+		cin>>a[i];
+		a[i+n]=a[i];
+	}
+	for(int i=1;i<=n*2;i++)
+	{
+		sum[i]=sum[i-1]+a[i];
+	}
+	for(int l=1;l<=n*2;l++)
+	{
+		for(int r=l;r<=2*n;r++)
+		{
+			f1[l][r][1]=f2[l][r][1]=mo(sum[r]-sum[l-1]);
+		}
+	}
+	for(int i=2;i<=m;i++)
+	{
+		for(int l=1;l<=2*n;l++)
+		{						//cout<<"Adhaow"<<endl;
+			for(int r=l+i-1;r<=2*n;r++)
+			{
+				f2[l][r][i]=0x3f3f3f3f;
+			}
+		}
+	}
+	for(int i=2;i<=m;i++)
+	{
+		for(int l=1;l<=2*n;l++)
+		{
+			for(int r=l+i-1;r<=2*n;r++)
+			{
+				for(int k=l+i-2;k<r;k++)
+				{
+					f1[l][r][i]=max(f1[l][r][i],f1[l][k][i-1]*mo(sum[r]-sum[k]));
+					f2[l][r][i]=min(f2[l][r][i],f2[l][k][i-1]*mo(sum[r]-sum[k]));
+				}
+			}
+		}
+	}
+	int ama=0,ami=0x3f3f3f3f;
+	for(int l=1;l<=n;l++)
+	{
+		ama=max(f1[l][l+n-1][m],ama);
+		ami=min(f2[l][l+n-1][m],ami);
+	}
+	cout<<ami<<"\n"<<ama;
+	return 0;
+}

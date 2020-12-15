@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n;
+int phi[40005];
+void euler(int n)
+{
+	for(int i=2;i<=n;i++)phi[i]=i;
+	for(int i=2;i<=n;i++)
+	{
+		if(phi[i]==i)
+		{
+			for(int j=i;j<=n;j+=i)
+			{
+				phi[j]=phi[j]/i*(i-1);
+			}
+		}
+	}
+}
+int main()
+{
+	cin>>n;
+	if(n==1)
+	{
+		cout<<0;
+		return 0;
+	}
+	euler(n);
+	int ans=0;
+	for(int i=2;i<n;i++)
+	{
+		ans+=phi[i];
+	}
+	/*cout<<"phi[i]=";
+	for(int i=1;i<=n;i++)
+	{
+		cout<<phi[i]<<" ";
+	}*/
+	ans*=2;
+	ans+=3;
+	cout<<ans;
+	return 0;
+}

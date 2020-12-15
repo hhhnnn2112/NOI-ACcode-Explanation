@@ -1,0 +1,27 @@
+
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    int t=0,s=0,z=0;//t表示当前每天可以得到几枚金币，s表示当前金币总数，z表示当前总天数 
+    while(1)
+    {
+        t++;
+        if(t+z>n) 
+            break;
+        /*t=a既可以表示当前每天可以得到a枚金币，也可以表示得a枚金币的状态即将持续a天
+        ，注意是即将持续，也就是这a*a枚金币在这时还没有累积，而z是当前已经计算了的天数。
+        当t+z>n时，也就是如果用a*a的当时累加，会使得到金币的天数>n，
+        所以要break，通过后面的for循环一天一天的加。*/
+        
+        s+=t*t;        //t*t为这t天一共可得的金币数
+        z+=t;
+    }
+    for(int i=z+1;i<=n;i++) 
+        s+=t;
+    /*当上面t+z=n时，不会break，累加一次t*t，
+    此时恰好得了n天的金币，z=n，for循环条件不满足，不执行。*/
+    cout<<s;
+    return 0;

@@ -1,0 +1,53 @@
+#include<cstdio>
+using namespace std;
+int main()
+{
+	int po[10][10] = { 0 };               
+	char p[10][10];                     
+	int r, c,kase=0;                      
+	while (scanf("%d", &r) == 1 && r != 0)                 
+	{
+		scanf("%d", &c);
+		if (kase > 0) putchar('\n');                       
+		printf("puzzle #%d:\nAcross\n", ++kase);
+		int t = 0;
+		for (int i = 0; i < r; i++)                             
+		{
+			scanf("%s", p[i]);
+			int pj = 0;
+			for (int j = 0; j < c; j++)
+			{
+				if (p[i][j] == '*') continue;
+				if (i == 0 || p[i - 1][j] == '*' || j == 0 || p[i][j - 1] == '*')                
+				{
+					t++; po[i][j] = t;
+					if (j >= pj)
+					{
+						int k;
+						printf("%3d.", t);
+						for (k = j; k < c && p[i][k] != '*'; k++) printf("%c",p[i][k]);
+						pj = k+1;
+						putchar('\n');
+					}
+				}
+			}
+		}
+		printf("Down\n");
+		for (int i = 0; i < r; i++)
+		{
+			for (int j = 0; j < c; j++)
+			{
+				if (po[i][j])
+				{
+					printf("%3d.", po[i][j]);
+					for (int k = i; k < r && p[k][j] != '*'; k++)
+					{
+						po[k][j] = 0; printf("%c", p[k][j]);
+					}
+					putchar('\n');
+				}
+			}
+		}
+	}
+	return 0;
+}

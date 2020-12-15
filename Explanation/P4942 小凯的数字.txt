@@ -1,0 +1,15 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ull unsigned long long
+ull n;
+ull l,r;
+int main()
+{
+	scanf("%llu",&n);
+	while(n--)
+	{
+		scanf("%llu%llu",&l,&r);
+		printf("%llu\n",(l+r)%9*(r-l+1)%9*5%9);
+	}
+	return 0;
+}

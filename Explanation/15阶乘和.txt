@@ -1,0 +1,51 @@
+
+#include<iostream>
+#include<cstdio>
+#include<cmath>
+#include<cstring>
+using namespace std;
+int a[10001]={1};
+int ans[100001]={0};
+char n[1001];
+int en[1001];
+int lans=1;
+int la=1;
+int x;
+int main()
+{
+    int n;
+    cin>>n;
+    int x=0;
+    for(int i=1;i<=n;i++)//寻找每一个数
+    {
+        memset(a,0,sizeof(a));
+        a[0]=1;
+        for(int k=1;k<=i;k++)//求阶乘
+        {
+            for(int j=0;j<la;j++)
+            {
+                a[j]=a[j]*k+x;
+                x=a[j]/10;
+                if(x>0&&j==la-1)
+                    la++;
+                a[j]=a[j]%10;
+            }
+        }
+        int l=0;
+        x=0;
+        while(l<=la||l<=lans) {
+            ans[l]=ans[l]+a[l]+x;
+            x=ans[l]/10;
+            if(x>0)lans++;
+            ans[l]=ans[l]%10;
+            l++;
+        }
+    }
+    int flag=0;
+    for(int i=lans;i>=0;i--){
+        if(ans[i]==0&&flag==0) continue;
+        else flag=1;
+        cout<<ans[i];
+    }
+    return 0;
+}

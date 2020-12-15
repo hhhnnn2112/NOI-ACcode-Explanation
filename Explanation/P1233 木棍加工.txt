@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n;
+int ans=0;
+int dp[10050];
+struct edge
+{
+	int w,l;
+}a[10010];
+bool cmp(edge x,edge y)
+{
+	if(x.l==y.l)
+	{
+		return x.w>y.w;
+	}
+	return x.l>y.l;
+}
+int len;
+int find(int x)
+{
+	int l=1,r=len,mid;
+	while(l<=r)
+	{
+		mid=(l+r)>>1;
+		if(x>dp[mid])l=mid+1;
+		else r=mid-1;
+	}
+}
+int main()
+{
+	cin>>n;
+	for(int i=1;i<=n;i++)
+	{
+		cin>>a[i].l>>a[i].w;
+	}
+	sort(a+1,a+1+n,cmp);
+	memset(dp,0x3f,sizeof dp);
+	for(int i=1;i<=n;i++)
+	{
+		int k=find(a[i].w);
+		dp[k]=a[i].w;
+		len=max(len,k);
+	}
+	cout<<len;
+	return 0;
+}

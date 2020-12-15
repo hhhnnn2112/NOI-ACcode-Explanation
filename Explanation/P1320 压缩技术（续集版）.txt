@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,c[40002],j=1,i=1;
+char a='0',b='0';
+int main()
+{
+	for(;cin>>a;)
+	{
+		i++;
+		if(a==b)
+		{
+			c[j]++;
+		}
+		else
+		{
+			c[++j]++;
+			b=a;
+		}
+	}
+	n=sqrt(i);
+	cout<<n;
+	for(int k=1;k<=j;k++)
+	{
+		cout<<" "<<c[k];
+	}
+}

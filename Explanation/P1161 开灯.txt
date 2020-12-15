@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool a[2000010];
+long long n,mme,abc;
+double emm;
+int main()
+{
+	cin>>n;
+	for(int i=0;i<n;i++)
+	{
+		cin>>emm>>mme;
+		for(int q=1;q<=mme;q++)
+		{
+			abc=emm*q/1;
+			a[abc]=!a[abc];
+		}
+	}
+	for(int i=0;i<=2000010;i++)
+	{
+		if(a[i]==1)
+		{
+			cout<<i;
+			break;
+		}
+	}
+	return 0;
+}

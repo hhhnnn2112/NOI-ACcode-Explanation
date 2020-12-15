@@ -1,0 +1,67 @@
+#include<bits/stdc++.h>
+using namespace std;
+int a[62550],aa,bb;
+char tem;
+int main()
+{
+	for(int i=1;cin>>tem&&tem!='E';i++)
+	{
+		if(tem=='W')
+		{
+			a[i]=1;
+		}
+		else
+		{
+			a[i]=2;
+		}
+	}
+	for(int j=1;1;j++)
+	{
+		if(a[j]==1)
+		{
+			aa++;
+		}
+		if(a[j]==2)
+		{
+			bb++;
+		}
+		if((aa>=11||bb>=11)&&(aa-bb>=2||bb-aa>=2))
+		{
+			cout<<aa<<":"<<bb;
+			cout<<endl;
+			aa=0;
+			bb=0;
+		}
+		if(a[j]==0)
+		{
+			cout<<aa<<":"<<bb<<endl<<endl;
+			break;
+		}
+	}
+	aa=0;
+	bb=0;
+	for(int j=1;1;j++)
+	{
+		if(a[j]==1)
+		{
+			aa++;
+		}
+		if(a[j]==2)
+		{
+			bb++;
+		}
+		if((aa>=21||bb>=21)&&(aa-bb>=2||bb-aa>=2))
+		{
+			cout<<aa<<":"<<bb;
+			cout<<endl;
+			aa=0;
+			bb=0;
+		}
+		if(a[j]==0)
+		{
+			cout<<aa<<":"<<bb;
+			break;
+		}
+	}
+	return 0;
+}

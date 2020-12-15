@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+char a,b;
+int aa,bb;
+int main()
+{
+	for(;cin>>a;)
+	{
+		if(a=='.')
+		{
+			b=a;
+			continue;
+		}
+		if(a=='b')
+		{
+			aa++;
+		}
+		if(a=='o'&&b!='b')
+		{
+			aa++;
+		}
+		if(a=='y'&&b!='o')
+		{
+			aa++;
+		}
+		if(a=='g'||(a=='i'&&b!='g')||(a=='r'&&b!='i'))
+		{
+			bb++;
+		}
+		if(a=='l'&&b!='r')
+		{
+			bb++;
+		}
+		b=a;
+	}
+	cout<<aa<<endl<<bb;
+	return 0;
+}
